@@ -32,7 +32,7 @@ Given this level of automation, it's clear the function must evolve. But simply 
 
 The next-generation HR Operations function will be defined by two core principles:
 
-1. HR as Product Management Team
+1. ##### HR as Product Management Team
 
 Instead of viewing its role as managing services or processes, the future HR Ops team will function like a software product team.
 
@@ -40,7 +40,7 @@ Instead of viewing its role as managing services or processes, the future HR Ops
 * Agile Methodology: This team won't work in annual cycles. They will operate in agile sprints, using user stories, A/B testing, and direct employee feedback to constantly improve their "products." Their goal is not just process compliance, but user adoption and satisfaction.
 * The End of the Portal: This model shatters the reliance on a single, monolithic HR system. Instead of forcing employees into a portal they rarely visit, HR services will be delivered directly into the flow of work—approving leave via a Slack command, completing a performance check-in via a Microsoft Teams notification, or receiving a personalised benefits nudge via email. HR Ops becomes the master of integration and user experience, not just a single system.
 
-2. The shift from Reactive from Predictive Operations:
+2. ##### The shift from Reactive from Predictive Operations:
 
 Automation handles the present, but true value comes from predicting the future. The ultimate evolution of HR Ops is to become the organisation's predictive engine.
 
