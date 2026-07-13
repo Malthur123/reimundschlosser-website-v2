@@ -3,7 +3,7 @@ title: "Let's talk about Payroll: Are You Paying Someone to Do Your Job?"
 date: 2026-04-24T18:48:00.000+01:00
 teaser: /images/uploads/payroll.png
 ---
-It's a familiar scene in countless finance and HR departments at the end of every month: the frantic rush to close payroll. Spreadsheets are flying, reports are being manually checked, and last-minute changes are causing headaches. Many of these companies have what they *think* is a solution: an external payroll provider. They signed a contract believing they were offloading this complex, mission-critical task.
+*It's a familiar scene in countless finance and HR departments at the end of every month: the frantic rush to close payroll. Spreadsheets are flying, reports are being manually checked, and last-minute changes are causing headaches. Many of these companies have what they think is a solution: an external payroll provider. They signed a contract believing they were offloading this complex, mission-critical task.*
 
 The reality? They're still drowning in payroll administration.
 
