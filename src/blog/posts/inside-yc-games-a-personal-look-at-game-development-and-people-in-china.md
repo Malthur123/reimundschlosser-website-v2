@@ -1,7 +1,7 @@
 ---
 title: "Inside YC Games: A Personal Look at Game Development and People in China"
 date: 2026-06-14T20:54:00.000+01:00
-teaser: /images/uploads/ycgames.png
+teaser: /images/uploads/ycgames1.png
 ---
 *During a recent trip to Shanghai, China, I had the unique opportunity to get a behind-the-scenes look at the country's vibrant video game industry. I visited the offices of YC Games, a prominent game development and publishing company, and the CEO and co-founder, Zhao Qianli, also happens to be my wife's uncle.*
 
