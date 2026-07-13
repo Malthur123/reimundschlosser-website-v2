@@ -10,4 +10,37 @@
 .post-banner { border-radius: var(--radius); height: 320px; margin: 34px 0; background-size: cover; background-position: center; background-color: var(--surface-2); }
 .post-content { max-width: 70ch; margin: 0 auto; font-size: 1.05rem; }
 .post-content p { margin-bottom: 1.2em; color: var(--ink); }
+
+/* markdown body content — headings, lists, blockquotes aren't used anywhere
+   else on the site, so they need their own rules; the global reset (tokens.css
+   `* { margin:0; padding:0 }`) strips the browser's default list indentation. */
+.post-content h2, .post-content h3, .post-content h4 {
+  font-family: 'Sora', sans-serif; color: var(--ink); font-weight: 700; line-height: 1.3;
+  margin: 1.8em 0 .6em;
+}
+.post-content h2:first-child, .post-content h3:first-child, .post-content h4:first-child { margin-top: 0; }
+.post-content h2 { font-size: 1.5rem; }
+.post-content h3 { font-size: 1.25rem; }
+.post-content h4 { font-size: 1.12rem; }
+
+.post-content ul, .post-content ol { margin: 0 0 1.2em; padding-left: 1.4em; color: var(--ink); }
+.post-content ul { list-style: disc; }
+.post-content ol { list-style: decimal; }
+.post-content li { margin-bottom: .6em; }
+.post-content li:last-child { margin-bottom: 0; }
+.post-content li > p { margin-bottom: .4em; }
+.post-content li > ul, .post-content li > ol { margin-top: .6em; }
+
+.post-content blockquote {
+  margin: 1.6em 0; padding: .2em 0 .2em 1.2em; border-left: 3px solid var(--teal);
+  color: var(--muted); font-style: italic;
+}
+.post-content blockquote p { margin-bottom: .5em; }
+.post-content blockquote p:last-child { margin-bottom: 0; }
+
+.post-content strong { color: var(--ink); font-weight: 700; }
+.post-content a { color: var(--teal); text-decoration: underline; text-underline-offset: 2px; }
+.post-content a:hover { color: var(--sun); }
+.post-content img { max-width: 100%; border-radius: var(--radius); margin: 1.2em 0; display: block; }
+
 .post-back { text-align: center; margin-bottom: 64px; }
