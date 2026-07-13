@@ -4,7 +4,7 @@
 header { position: relative; padding: 88px 0 76px; }
 header .cell { animation: drift 16s ease-in-out infinite alternate; opacity: .45; }
 header .cell.a { width: 440px; height: 440px; background: radial-gradient(circle at 30% 30%, #3fe0c5 0%, transparent 65%); top: -100px; right: 0; }
-header .cell.b { width: 360px; height: 360px; background: radial-gradient(circle at 60% 60%, #ffd08a 0%, transparent 65%); bottom: -60px; left: 8%; animation-delay: -7s; }
+header .cell.b { width: min(360px, 70vw); height: min(360px, 70vw); background: radial-gradient(circle at 60% 60%, #ffd08a 0%, transparent 65%); bottom: -60px; left: 8%; animation-delay: -7s; }
 @keyframes drift { from { transform: translate(0, 0); } to { transform: translate(-30px, 24px); } }
 
 .hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: center; }
