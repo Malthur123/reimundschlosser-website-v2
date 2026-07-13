@@ -21,6 +21,21 @@
 
 {% include "partials/footer.njk" %}
 
+<!-- Netlify Identity must be present on every page (not just /admin/), since invite,
+     confirmation, and password-recovery emails link to the site root with a token
+     in the URL hash — the widget is what reads that token and opens the set-password modal. -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", (user) => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 {%- for src in scripts or [] %}
 <script src="{{ src }}"></script>
 {%- endfor %}
