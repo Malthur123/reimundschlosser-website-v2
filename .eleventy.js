@@ -5,6 +5,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/admin");
+  eleventyConfig.addPassthroughCopy("src/favicon.svg");
+  eleventyConfig.addPassthroughCopy("src/favicon-32x32.png");
+  eleventyConfig.addPassthroughCopy("src/favicon-16x16.png");
+  eleventyConfig.addPassthroughCopy("src/apple-touch-icon.png");
 
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return new Date(dateObj).toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" });
