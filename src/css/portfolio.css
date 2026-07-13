@@ -1,0 +1,38 @@
+/* Portfolio list + project detail — see design/portfolio-v1.html */
+
+.grid-section { padding: 48px 0 84px; }
+.p-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+@media (max-width: 900px) { .p-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .p-grid { grid-template-columns: 1fr; } }
+.tile {
+  background: var(--surface); border: 1px solid rgba(63, 224, 197, .14); border-radius: var(--radius); overflow: hidden;
+  cursor: pointer; transition: transform .18s ease, border-color .18s ease; display: block;
+}
+.tile:hover { transform: translateY(-5px); border-color: rgba(255, 208, 138, .5); }
+.tile .ph { height: 170px; position: relative; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; }
+.tile .ph .num { font-family: 'Sora'; font-weight: 700; font-size: 3.4rem; color: rgba(244, 241, 232, .22); letter-spacing: .04em; }
+.tile h3 { font-size: 1.02rem; padding: 18px 22px 6px; line-height: 1.45; }
+.tile .more { color: var(--teal); font-size: .85rem; padding: 0 22px 20px; display: block; }
+
+/* placeholder gradients, rotating through the palette until real project images exist */
+.g1 { background: linear-gradient(140deg, #1d3b4e, #2a6b62); } .g2 { background: linear-gradient(140deg, #2a3f56, #6e5a45); }
+.g3 { background: linear-gradient(140deg, #173a4a, #5a4a5e); } .g4 { background: linear-gradient(140deg, #204a52, #3fa08e); }
+.g5 { background: linear-gradient(140deg, #33424f, #8a6a52); } .g6 { background: linear-gradient(140deg, #1b4452, #4f6e5a); }
+.g7 { background: linear-gradient(140deg, #274052, #7a5a62); } .g8 { background: linear-gradient(140deg, #1a3d55, #4a6a8a); }
+.g9 { background: linear-gradient(140deg, #254a4e, #946f4e); }
+
+/* PROJECT DETAIL */
+.detail-head { padding: 70px 0 30px; }
+.detail-head h1 { text-align: left; margin-bottom: 14px; }
+.summary { color: var(--muted); font-size: 1.1rem; max-width: 66ch; }
+.banner {
+  border-radius: var(--radius); height: 240px; margin: 34px 0 10px; position: relative;
+  display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center;
+}
+.detail-body { padding: 20px 0 60px; }
+.detail-body h2 { font-size: 1.3rem; margin: 34px 0 10px; }
+.detail-body h2::before {
+  content: ""; display: inline-block; width: 22px; height: 6px; border-radius: 3px; margin-right: 12px; vertical-align: middle;
+  background: linear-gradient(90deg, var(--teal), var(--sun));
+}
+.detail-body p { color: var(--muted); max-width: 70ch; }

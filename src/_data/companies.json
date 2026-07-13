@@ -1,0 +1,8 @@
+[
+  { "name": "Vodafone", "logo": "/images/logos/vodafone.png" },
+  { "name": "Activision Blizzard", "logo": "/images/logos/activision-blizzard.png" },
+  { "name": "Gilead Sciences", "logo": "/images/logos/gilead-sciences.png" },
+  { "name": "Teads", "logo": "/images/logos/teads.png" },
+  { "name": "toom Baumarkt", "logo": "/images/logos/toom-baumarkt.png" },
+  { "name": "Peloton", "logo": "/images/logos/peloton.png" }
+]

@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+title: Contact
+description: "Get in touch with Reimund Schlosser."
+css:
+  - /css/contact.css
+permalink: /contact/
+---
+<div class="page-head">
+  <div class="cell a"></div><div class="cell b"></div>
+  <div class="wrap">
+    <h1>Get in <span class="glow">Touch</span></h1>
+    <p class="intro">Have a question, a project proposal, or just want to say hello? I'd love to hear from you. Fill out the form below, and I'll get back to you as soon as possible.</p>
+  </div>
+</div>
+
+<div class="form-section">
+  <div class="wrap">
+    <div class="form-card">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp-field">
+          <label>Don't fill this out if you're human: <input name="bot-field"></label>
+        </p>
+
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" required>
+
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+
+        <label for="subject">Subject</label>
+        <input id="subject" name="subject" type="text" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button class="send" type="submit">Send Message</button>
+      </form>
+      <p class="alt">Prefer email? Reach me directly at <a href="mailto:hey@reimundschlosser.com">hey@reimundschlosser.com</a></p>
+    </div>
+  </div>
+</div>

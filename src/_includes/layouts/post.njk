@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+css:
+  - /css/blog.css
+---
+<div class="wrap">
+  <div class="detail-head">
+    <h1>{{ title }}</h1>
+    <span class="post-date">{{ date | readableDate }}</span>
+    {%- if teaser %}
+    <div class="post-banner" style="background-image:url('{{ teaser }}')"></div>
+    {%- endif %}
+  </div>
+  <div class="post-content">
+    {{ content | safe }}
+  </div>
+  <p style="text-align:center">
+    <a class="back" href="/blog/">← Back to Blog</a>
+  </p>
+</div>

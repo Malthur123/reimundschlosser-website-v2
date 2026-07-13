@@ -1,0 +1,8 @@
+<nav><div class="nav-inner">
+  <a class="brand" href="/">REIMUND<em>SCHLOSSER</em></a>
+  <div class="links">
+    {%- for item in site.nav %}
+    <a href="{{ item.url }}"{% if (item.url == "/" and page.url == "/") or (item.url != "/" and page.url.startsWith(item.url)) %} class="active"{% endif %}>{{ item.label }}</a>
+    {%- endfor %}
+  </div>
+</div></nav>

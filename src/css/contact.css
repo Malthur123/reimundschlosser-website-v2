@@ -1,0 +1,29 @@
+/* Contact page — see design/contact-v1.html */
+
+.form-section { padding: 44px 0 90px; }
+.form-card {
+  max-width: 680px; margin: 0 auto; background: var(--surface); border: 1px solid rgba(63, 224, 197, .14);
+  border-radius: var(--radius); padding: 44px 46px;
+}
+@media (max-width: 600px) { .form-card { padding: 30px 22px; } }
+label { display: block; font-weight: 700; font-size: .95rem; margin: 22px 0 8px; color: var(--ink); }
+label:first-of-type { margin-top: 0; }
+input, textarea {
+  width: 100%; background: rgba(16, 34, 46, .6); border: 1px solid rgba(163, 184, 194, .3); border-radius: 12px;
+  padding: 13px 16px; color: var(--ink); font-family: 'Lato', sans-serif; font-size: 1rem;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+input:focus, textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(63, 224, 197, .18); }
+textarea { min-height: 150px; resize: vertical; }
+::placeholder { color: rgba(163, 184, 194, .5); }
+.send {
+  margin-top: 30px; padding: 14px 32px; border-radius: 999px; border: none; cursor: pointer;
+  background: var(--teal); color: #0b2b25; font-weight: 700; font-size: .98rem; font-family: 'Lato', sans-serif;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.send:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(63, 224, 197, .3); }
+.alt { margin-top: 22px; color: var(--muted); font-size: .9rem; text-align: center; }
+.alt a { color: var(--teal); }
+
+/* Netlify Forms honeypot field — hidden from sighted users and screen readers, still reachable by bots */
+.hp-field { position: absolute; left: -9999px; top: -9999px; }

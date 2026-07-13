@@ -1,0 +1,27 @@
+---
+layout: layouts/base.njk
+title: Portfolio
+description: "A selection of Reimund Schlosser's work across strategic HR — business partnering, org design, culture, and rewards."
+css:
+  - /css/portfolio.css
+---
+<div class="page-head">
+  <div class="cell a"></div><div class="cell b"></div>
+  <div class="wrap">
+    <h1>My <span class="glow">Portfolio</span></h1>
+    <p class="intro">A selection of my work across strategic HR — from business partnering and org design to culture, rewards, and everything that makes global teams thrive. Each project tells the story of a challenge, a solution, and the people it helped.</p>
+  </div>
+</div>
+<div class="grid-section">
+  <div class="wrap">
+    <div class="p-grid">
+      {%- for project in collections.portfolio %}
+      <a class="tile" href="{{ project.url }}">
+        <div class="ph g{{ project.data.order }}"><span class="num">{{ "0" if project.data.order < 10 else "" }}{{ project.data.order }}</span></div>
+        <h3>{{ project.data.title }}</h3>
+        <span class="more">View project →</span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+---
+layout: layouts/base.njk
+css:
+  - /css/portfolio.css
+---
+<div class="wrap">
+  <div class="detail-head">
+    <h1>{{ title }}</h1>
+    <p class="summary">{{ summary }}</p>
+    <div class="banner{% if not image %} g{{ order }}{% endif %}"{% if image %} style="background-image:url('{{ image }}')"{% endif %}></div>
+  </div>
+  <div class="detail-body">
+    <h2>My Role &amp; Responsibilities</h2>
+    {{ role | markdown | safe }}
+    <h2>The Challenge</h2>
+    {{ challenge | markdown | safe }}
+    <h2>The Solution &amp; Outcome</h2>
+    {{ solution | markdown | safe }}
+    <a class="back" href="/portfolio/">← Back to Portfolio</a>
+  </div>
+</div>

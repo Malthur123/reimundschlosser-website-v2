@@ -1,0 +1,34 @@
+---
+layout: layouts/base.njk
+title: Blog
+description: "Notes on HR, culture, and building teams across borders."
+css:
+  - /css/portfolio.css
+  - /css/blog.css
+permalink: /blog/
+---
+<div class="page-head">
+  <div class="cell a"></div><div class="cell b"></div>
+  <div class="wrap">
+    <h1>From the <span class="glow">Blog</span></h1>
+    <p class="intro">Thoughts on HR, culture, and building teams across borders.</p>
+  </div>
+</div>
+<div class="grid-section">
+  <div class="wrap">
+    {%- if collections.posts.length %}
+    <div class="p-grid">
+      {%- for post in collections.posts | reverse %}
+      <a class="tile" href="{{ post.url }}">
+        <div class="ph g{{ (loop.index0 % 9) + 1 }}"></div>
+        <span class="post-date">{{ post.data.date | readableDate }}</span>
+        <h3>{{ post.data.title }}</h3>
+        <span class="more">Read more →</span>
+      </a>
+      {%- endfor %}
+    </div>
+    {%- else %}
+    <p class="sub" style="text-align:center;margin-left:auto;margin-right:auto">No posts yet — check back soon.</p>
+    {%- endif %}
+  </div>
+</div>

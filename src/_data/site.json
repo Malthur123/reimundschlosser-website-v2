@@ -1,0 +1,16 @@
+{
+  "name": "Reimund Schlosser",
+  "titleSuffix": "Reimund Schlosser",
+  "nav": [
+    { "label": "About", "url": "/" },
+    { "label": "Portfolio", "url": "/portfolio/" },
+    { "label": "Blog", "url": "/blog/" },
+    { "label": "Contact", "url": "/contact/" }
+  ],
+  "footer": {
+    "role": "Global People & Culture Business Partner",
+    "location": "Bromley, South London, UK",
+    "email": "hey@reimundschlosser.com"
+  },
+  "year": 2026
+}

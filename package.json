@@ -1,0 +1,16 @@
+{
+  "name": "reimundschlosser-v2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "reimundschlosser.com — personal site, Eleventy + Decap CMS + Netlify",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "debug": "DEBUG=Eleventy* eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "markdown-it": "^14.1.0",
+    "sharp": "^0.35.3"
+  }
+}

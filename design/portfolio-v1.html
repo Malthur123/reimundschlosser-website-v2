@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Deep Current Warm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#10222e; --surface:#173040; --surface-2:#1d3b4e;
+    --ink:#f4f1e8; --muted:#a3b8c2;
+    --teal:#3fe0c5; --coral:#ff8e7a; --sun:#ffd08a;
+    --radius:20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Lato',system-ui,sans-serif;line-height:1.7;overflow-x:hidden;
+    background-image:radial-gradient(1px 1px at 12% 18%, rgba(244,241,232,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 78% 8%, rgba(244,241,232,.3) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 55% 30%, rgba(255,208,138,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 30% 60%, rgba(244,241,232,.22) 50%, transparent 51%),
+      radial-gradient(1px 1px at 90% 45%, rgba(63,224,197,.3) 50%, transparent 51%);
+    background-attachment:fixed}
+  h1,h2,h3,.brand{font-family:'Sora',system-ui,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(16,34,46,.8);border-bottom:1px solid rgba(63,224,197,.14)}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;max-width:1080px;margin:0 auto}
+  .brand{font-weight:700;font-size:1.05rem}
+  .brand em{font-style:normal;color:var(--teal)}
+  .links{display:flex;gap:28px;font-size:.92rem;color:var(--muted)}
+  .links a:hover{color:var(--teal)}
+  .links a.active{color:var(--ink);border-bottom:2px solid var(--teal);padding-bottom:3px}
+
+  /* PAGE HEAD */
+  .page-head{padding:76px 0 20px;text-align:center;position:relative}
+  .cell{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;pointer-events:none}
+  .cell.a{width:380px;height:380px;background:radial-gradient(circle at 30% 30%, #3fe0c5 0%, transparent 65%);top:-120px;right:6%}
+  .cell.b{width:300px;height:300px;background:radial-gradient(circle at 60% 60%, #ffd08a 0%, transparent 65%);top:-40px;left:10%}
+  h1{font-size:clamp(2.1rem,4.4vw,3rem);font-weight:700;margin-bottom:16px}
+  h1 .glow{background:linear-gradient(92deg,var(--teal),var(--sun));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .intro{max-width:62ch;margin:0 auto;color:var(--muted);font-size:1.08rem}
+
+  /* GRID */
+  .grid-section{padding:48px 0 84px}
+  .p-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:900px){.p-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.p-grid{grid-template-columns:1fr}}
+  .tile{background:var(--surface);border:1px solid rgba(63,224,197,.14);border-radius:var(--radius);overflow:hidden;
+    cursor:pointer;transition:transform .18s ease, border-color .18s ease;display:block}
+  .tile:hover{transform:translateY(-5px);border-color:rgba(255,208,138,.5)}
+  .tile .ph{height:170px;position:relative;display:flex;align-items:center;justify-content:center}
+  .tile .ph .num{font-family:'Sora';font-weight:700;font-size:3.4rem;color:rgba(244,241,232,.22);letter-spacing:.04em}
+  .tile .ph .cam{position:absolute;bottom:10px;right:14px;font-size:.75rem;color:rgba(244,241,232,.55);
+    background:rgba(16,34,46,.45);padding:3px 10px;border-radius:999px}
+  .tile h3{font-size:1.02rem;padding:18px 22px 6px;line-height:1.45}
+  .tile .more{color:var(--teal);font-size:.85rem;padding:0 22px 20px;display:block}
+  /* placeholder gradients, rotating through the palette */
+  .g1{background:linear-gradient(140deg,#1d3b4e,#2a6b62)} .g2{background:linear-gradient(140deg,#2a3f56,#6e5a45)}
+  .g3{background:linear-gradient(140deg,#173a4a,#5a4a5e)} .g4{background:linear-gradient(140deg,#204a52,#3fa08e)}
+  .g5{background:linear-gradient(140deg,#33424f,#8a6a52)} .g6{background:linear-gradient(140deg,#1b4452,#4f6e5a)}
+  .g7{background:linear-gradient(140deg,#274052,#7a5a62)} .g8{background:linear-gradient(140deg,#1a3d55,#4a6a8a)}
+  .g9{background:linear-gradient(140deg,#254a4e,#946f4e)}
+
+  /* DETAIL VIEW */
+  #detail{display:none}
+  .detail-head{padding:70px 0 30px}
+  .detail-head h1{text-align:left;margin-bottom:14px}
+  .summary{color:var(--muted);font-size:1.1rem;max-width:66ch}
+  .banner{border-radius:var(--radius);height:240px;margin:34px 0 10px;position:relative;display:flex;align-items:center;justify-content:center}
+  .banner .cam{position:absolute;bottom:12px;right:16px;font-size:.78rem;color:rgba(244,241,232,.55);
+    background:rgba(16,34,46,.45);padding:3px 10px;border-radius:999px}
+  .detail-body{padding:20px 0 60px}
+  .detail-body h2{font-size:1.3rem;margin:34px 0 10px}
+  .detail-body h2::before{content:"";display:inline-block;width:22px;height:6px;border-radius:3px;margin-right:12px;vertical-align:middle;
+    background:linear-gradient(90deg,var(--teal),var(--sun))}
+  .detail-body p{color:var(--muted);max-width:70ch}
+  .back{display:inline-flex;align-items:center;gap:8px;margin-top:44px;padding:12px 24px;border-radius:999px;
+    border:1.5px solid var(--teal);color:var(--teal);font-weight:700;font-size:.92rem;transition:transform .15s ease;cursor:pointer;background:none;font-family:'Lato'}
+  .back:hover{transform:translateX(-3px)}
+
+  footer{border-top:1px solid rgba(63,224,197,.12);padding:52px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;text-align:center}
+  @media(max-width:640px){.foot-grid{grid-template-columns:1fr}}
+  .foot-grid .col:first-child{text-align:left}
+  .foot-grid .col:last-child{text-align:right}
+  @media(max-width:640px){.foot-grid .col:first-child,.foot-grid .col:last-child{text-align:center}}
+  .foot-grid b{font-family:'Sora';display:block;margin-bottom:6px;color:var(--ink)}
+  .foot-grid span{color:var(--muted);font-size:.92rem}
+  .foot-grid a{color:var(--teal)}
+  .copyright{text-align:center;color:var(--muted);font-size:.82rem;margin-top:36px}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner">
+  <a class="brand" href="#">REIMUND<em>SCHLOSSER</em></a>
+  <div class="links"><a href="#">About</a><a class="active" href="#">Portfolio</a><a href="#">Blog</a><a href="#">Contact</a></div>
+</div></nav>
+
+<!-- ===== PORTFOLIO GRID VIEW ===== -->
+<div id="grid-view">
+  <div class="page-head">
+    <div class="cell a"></div><div class="cell b"></div>
+    <div class="wrap">
+      <h1>My <span class="glow">Portfolio</span></h1>
+      <p class="intro">A selection of my work across strategic HR — from business partnering and org design to culture, rewards, and everything that makes global teams thrive. Each project tells the story of a challenge, a solution, and the people it helped.</p>
+    </div>
+  </div>
+  <div class="grid-section">
+    <div class="wrap">
+      <div class="p-grid" id="p-grid"><!-- tiles injected by JS --></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROJECT DETAIL VIEW ===== -->
+<div id="detail">
+  <div class="wrap">
+    <div class="detail-head">
+      <h1 id="d-title">Project title</h1>
+      <p class="summary">This is a one-paragraph summary of the project, its main goal, and the key result. It should be concise and compelling.</p>
+      <div class="banner" id="d-banner"><span class="cam">📷 project image</span></div>
+    </div>
+    <div class="detail-body">
+      <h2>My Role &amp; Responsibilities</h2>
+      <p>Describe your specific role in this project. What were you responsible for? Did you lead the project, or were you a key contributor? Use bullet points if it helps clarify your tasks.</p>
+      <h2>The Challenge</h2>
+      <p>What was the business problem or challenge that this project was designed to solve? Provide some context for the reader.</p>
+      <h2>The Solution &amp; Outcome</h2>
+      <p>Explain the solution you implemented. How did it address the challenge? Most importantly, what were the results? Use metrics and data if possible (e.g., "reduced employee turnover by 15%," "improved engagement scores by 20%").</p>
+      <button class="back" id="back-btn">← Back to Portfolio</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="col"><b>Reimund Schlosser</b><span>Global People &amp; Culture Business Partner</span></div>
+      <div class="col"><b>Location</b><span>Bromley, South London, UK</span></div>
+      <div class="col"><b>Contact</b><span><a href="mailto:hey@reimundschlosser.com">hey@reimundschlosser.com</a></span></div>
+    </div>
+    <div class="copyright">© 2026 Reimund Schlosser</div>
+  </div>
+</footer>
+
+<script>
+  var projects = [
+    "Strategic Business Partnering",
+    "Global Workforce Strategy",
+    "Org Design and M&A Integration",
+    "Data-Driven Decision Support",
+    "Succession Planning & Executive Coaching",
+    "High-Performance Culture Design",
+    "Global Total Rewards Strategy",
+    "Strategic Risk & Compliance",
+    "Inclusive Culture and DE&I Strategy"
+  ];
+
+  var grid = document.getElementById('p-grid');
+  projects.forEach(function(title, i){
+    var t = document.createElement('a');
+    t.className = 'tile';
+    t.href = '#project-' + (i+1);
+    t.innerHTML =
+      '<div class="ph g' + (i+1) + '"><span class="num">0' + (i+1) + '</span><span class="cam">📷 placeholder</span></div>' +
+      '<h3>' + title + '</h3>' +
+      '<span class="more">View project →</span>';
+    t.addEventListener('click', function(e){
+      e.preventDefault();
+      openDetail(i);
+    });
+    grid.appendChild(t);
+  });
+
+  function openDetail(i){
+    document.getElementById('d-title').textContent = projects[i];
+    var banner = document.getElementById('d-banner');
+    banner.className = 'banner g' + (i+1);
+    banner.innerHTML = '<span class="cam">📷 project image</span>';
+    document.getElementById('grid-view').style.display = 'none';
+    document.getElementById('detail').style.display = 'block';
+    window.scrollTo({top:0});
+  }
+
+  document.getElementById('back-btn').addEventListener('click', function(){
+    document.getElementById('detail').style.display = 'none';
+    document.getElementById('grid-view').style.display = 'block';
+    window.scrollTo({top:0});
+  });
+</script>
+
+</body>
+</html>

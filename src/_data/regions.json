@@ -1,0 +1,17 @@
+{
+  "europe": {
+    "color": "teal",
+    "codes": ["GB", "DE", "FR", "ES", "IT", "AT", "CH", "NL", "SE", "PL", "SK", "SI", "RO"],
+    "countries": ["United Kingdom", "Germany", "France", "Spain", "Italy", "Austria", "Switzerland", "Netherlands", "Sweden", "Poland", "Slovakia", "Slovenia", "Romania"]
+  },
+  "americas": {
+    "color": "coral",
+    "codes": ["US", "MX", "BR"],
+    "countries": ["USA", "Mexico", "Brazil"]
+  },
+  "apac": {
+    "color": "sun",
+    "codes": ["SG", "ID", "PH", "JP", "KR", "AU"],
+    "countries": ["Singapore", "Hong Kong", "Indonesia", "Philippines", "Japan", "Korea", "Australia"]
+  }
+}

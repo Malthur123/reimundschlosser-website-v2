@@ -1,0 +1,132 @@
+---
+layout: layouts/base.njk
+title: HR Business Partner in London
+description: "Reimund Schlosser — Global People & Culture Business Partner. HR that feels like an ecosystem: alive, connected, warm."
+css:
+  - https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.5.3/css/jsvectormap.min.css
+  - /css/home.css
+scripts:
+  - https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.5.3/js/jsvectormap.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/jsvectormap/1.5.3/maps/world.js
+  - /js/world-map.js
+---
+<!-- HERO -->
+<header>
+  <div class="cell a"></div><div class="cell b"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">HR Business Partner · People-first, everywhere</div>
+      <h1>HR that feels like an ecosystem — <span class="glow">alive, connected, warm.</span></h1>
+      <p class="lede">Hi, I'm Reimund — an international HR professional based in London. Born and raised in Germany, I moved here in 2018 <b>for love</b>, and I've been happily married ever since. Nine years in HR, a lifelong passion for video games and tech, and one guiding belief: <b>work should feel human</b> — approachable, inclusive, and built around the people who do it.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="/portfolio/">See my work</a>
+        <a class="btn warm" href="/contact/">Say hello</a>
+      </div>
+    </div>
+    <div class="portrait-wrap">
+      <div class="portrait has-photo" style="background-image:url('/images/portrait.jpg')" role="img" aria-label="Portrait of Reimund Schlosser"></div>
+    </div>
+  </div>
+</header>
+
+<!-- COMPANIES -->
+<section>
+  <div class="wrap">
+    <h2 style="text-align:center">Companies I've worked with</h2>
+    <p class="sub" style="text-align:center;margin-left:auto;margin-right:auto">A few of the places that shaped how I think about people and work — from global gaming and tech to retail and life sciences.</p>
+    <div class="nebula">
+      <div class="cloud">
+        {%- for company in companies %}
+        <div class="puff"><img src="{{ company.logo }}" alt="{{ company.name }}"></div>
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section>
+  <div class="wrap">
+    <div class="city-banner" style="background-color:var(--surface-2);background-image:url('/images/banners/london-skyline.jpg')">
+      <span>London</span>
+    </div>
+    <h2>My professional journey</h2>
+    <p class="sub">Less a career ladder, more a story in three chapters — from learning the craft in Germany to shaping global people strategy from London.</p>
+    <div class="chapters">
+      <div class="chapter">
+        <div><div class="word">Roots</div><div class="where">Germany</div></div>
+        <div>
+          <p>My HR journey began in Germany, where I built a strong foundation in the craft: learning <b>recruitment fundamentals</b> as an intern at Vodafone, then going deep into HR operations, employee relations and labour law at toom Baumarkt — people processes at the scale of 14,000 employees.</p>
+          <div class="co-tags"><span class="co-tag">Vodafone</span><span class="co-tag">toom Baumarkt</span></div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div><div class="word">Momentum</div><div class="where">London · Tech &amp; Gaming</div></div>
+        <div>
+          <p>Relocating to the UK, my career accelerated in tech and gaming. I supported 1,000+ employees across Europe at Gilead Sciences, built Peloton's German HR environment from the ground up, then advanced to <b>HR Business Partner at Activision Blizzard</b> — leading the EMEA Disability Network and playing a key role in the people side of the landmark Microsoft acquisition.</p>
+          <div class="co-tags"><span class="co-tag">Gilead Sciences</span><span class="co-tag">Peloton</span><span class="co-tag">Activision Blizzard</span></div>
+        </div>
+      </div>
+      <div class="chapter">
+        <div><div class="word">Today</div><div class="where">Global · Teads</div></div>
+        <div>
+          <p>As People &amp; Culture Business Partner at Teads, I partner with the global Commercial department — guiding senior leaders on aligning people strategy with business goals, coaching them through organisational challenges, and building a <b>scalable, high-performance culture</b> across international teams.</p>
+          <div class="co-tags"><span class="co-tag">Teads</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL MAP -->
+<section>
+  <div class="wrap">
+    <div class="map-panel">
+      <h2 style="text-align:center">Global HR experience</h2>
+      <p class="sub" style="text-align:center;margin-left:auto;margin-right:auto">23 countries across four regions — every point of light a place where I've partnered with HR people on the ground.</p>
+      <div class="region-key">
+        <span><i class="key-dot" style="background:var(--teal)"></i>Europe</span>
+        <span><i class="key-dot" style="background:var(--coral)"></i>Americas</span>
+        <span><i class="key-dot" style="background:var(--sun)"></i>Asia-Pacific</span>
+      </div>
+      <div id="world-map"></div>
+      <p class="map-fallback" id="map-fallback">Interactive map couldn't load — the full country list is below.</p>
+      <div class="chips">
+        {%- for country in regions.europe.countries %}
+        <span class="chip">{{ country }}</span>
+        {%- endfor %}
+        {%- for country in regions.americas.countries %}
+        <span class="chip">{{ country }}</span>
+        {%- endfor %}
+        {%- for country in regions.apac.countries %}
+        <span class="chip">{{ country }}</span>
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURES -->
+<section>
+  <div class="wrap">
+    <div class="city-banner" style="background-color:var(--surface-2);background-image:url('/images/banners/shanghai-skyline.jpg')">
+      <span>Shanghai</span>
+    </div>
+    <h2>Bridging cultures, building teams</h2>
+    <p class="culture-lede">Some careers follow a straight line; mine follows an orbit. A German in London, married to a Shanghai native I met during a semester in Hong Kong — my life runs on cultural exchange, and so does my work. <b>Empathy, communication and cultural sensitivity</b> aren't soft skills to me; they're the operating system of every great team I've helped build.</p>
+    <div class="orbit-cards">
+      <div class="ocard">
+        <div class="route">Cologne → London</div>
+        <p>Born and raised in Germany, home in the UK since 2018. Two working cultures, one lesson: trust travels further than process.</p>
+      </div>
+      <div class="ocard">
+        <div class="route">Hong Kong → Shanghai</div>
+        <p>A study semester in Hong Kong changed everything — it's where I met my wife. Frequent visits to her family in Shanghai keep my view of work and life genuinely global.</p>
+      </div>
+      <div class="ocard">
+        <div class="route">Commercial ↔ Human</div>
+        <p>As an HR Business Partner I speak the language of strategy fluently — but my true passion is the people behind the plan, and making sure every one of them feels valued.</p>
+      </div>
+    </div>
+  </div>
+</section>
