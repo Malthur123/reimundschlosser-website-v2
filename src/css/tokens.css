@@ -48,6 +48,29 @@ nav {
 .links a:hover { color: var(--teal); }
 .links a.active { color: var(--ink); border-bottom: 2px solid var(--teal); padding-bottom: 3px; }
 
+.nav-toggle {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 32px; height: 32px; background: none; border: none; padding: 0; cursor: pointer; z-index: 11;
+}
+.nav-toggle span { display: block; width: 100%; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .2s ease, opacity .2s ease; }
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 700px) {
+  .nav-toggle { display: flex; }
+  .links {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; gap: 0;
+    background: rgba(16, 34, 46, .96); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(63, 224, 197, .14);
+    max-height: 0; overflow: hidden; transition: max-height .25s ease;
+  }
+  .links.open { max-height: 300px; }
+  .links a { padding: 16px 24px; border-bottom: 1px solid rgba(63, 224, 197, .08); }
+  .links a.active { border-bottom: 1px solid rgba(63, 224, 197, .08); padding-bottom: 16px; }
+}
+
 /* AMBIENT GLOW CELLS */
 .cell { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .35; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .cell { animation: none !important; } }
