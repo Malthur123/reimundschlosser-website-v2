@@ -31,7 +31,7 @@ header h1 { font-size: clamp(2.2rem, 4.8vw, 3.4rem); line-height: 1.15; margin: 
 .nebula { position: relative; padding: 30px 0 20px; }
 .nebula::before {
   content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-  width: 640px; height: 280px; border-radius: 50%; filter: blur(90px); opacity: .28; pointer-events: none;
+  width: min(640px, 90vw); height: min(280px, 40vw); border-radius: 50%; filter: blur(90px); opacity: .28; pointer-events: none;
   background: radial-gradient(ellipse at 35% 45%, #3fe0c5 0%, transparent 60%),
               radial-gradient(ellipse at 70% 55%, #ffd08a 0%, transparent 60%);
 }

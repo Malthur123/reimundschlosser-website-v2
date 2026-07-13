@@ -15,6 +15,13 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+html {
+  /* mobile Chrome doesn't reliably honor overflow-x:hidden on body alone to
+     suppress document-level horizontal scroll caused by oversized decorative
+     elements (e.g. .nebula::before) — it must also be set on html. */
+  overflow-x: hidden;
+}
+
 body {
   background: var(--bg);
   color: var(--ink);
