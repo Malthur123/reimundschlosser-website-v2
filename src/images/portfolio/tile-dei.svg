@@ -1,0 +1,45 @@
+<svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstract artwork of diverse circles inside a soft glowing boundary">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14303f"/>
+      <stop offset=".55" stop-color="#1d3b4e"/>
+      <stop offset="1" stop-color="#24515a"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3fe0c5"/><stop offset="1" stop-color="#ffd08a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="rgba(63,224,197,.16)"/><stop offset="1" stop-color="rgba(63,224,197,0)"/>
+    </radialGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg)"/>
+  <!-- stars -->
+  <g fill="#f4f1e8">
+    <circle cx="60" cy="45" r="1.4" opacity=".35"/><circle cx="530" cy="55" r="1.2" opacity=".3"/>
+    <circle cx="300" cy="24" r="1.5" opacity=".3"/><circle cx="80" cy="300" r="1.3" opacity=".28"/>
+  </g>
+  <!-- glow + boundary -->
+  <ellipse cx="300" cy="180" rx="235" ry="120" fill="url(#glow)"/>
+  <ellipse cx="300" cy="180" rx="210" ry="105" fill="none" stroke="url(#ring)" stroke-width="2.5" stroke-dasharray="11 13" opacity=".85"/>
+  <!-- gentle connections -->
+  <g stroke="rgba(163,184,194,.32)" stroke-width="1.4">
+    <line x1="170" y1="180" x2="250" y2="130"/><line x1="250" y1="130" x2="310" y2="200"/>
+    <line x1="310" y1="200" x2="390" y2="140"/><line x1="390" y1="140" x2="440" y2="200"/>
+    <line x1="170" y1="180" x2="245" y2="230"/><line x1="245" y1="230" x2="310" y2="200"/>
+    <line x1="440" y1="200" x2="380" y2="245"/><line x1="380" y1="245" x2="310" y2="200"/>
+  </g>
+  <!-- diverse circles -->
+  <g>
+    <circle cx="170" cy="180" r="22" fill="#3fe0c5"/>
+    <circle cx="250" cy="130" r="15" fill="#ff8e7a"/>
+    <circle cx="310" cy="200" r="26" fill="#ffd08a"/>
+    <circle cx="390" cy="140" r="16" fill="#f4f1e8"/>
+    <circle cx="440" cy="200" r="20" fill="#3fe0c5" opacity=".8"/>
+    <circle cx="245" cy="230" r="12" fill="#a3b8c2"/>
+    <circle cx="380" cy="245" r="13" fill="#ff8e7a" opacity=".85"/>
+  </g>
+  <!-- circles drifting toward the space -->
+  <circle cx="80" cy="80" r="9" fill="rgba(163,184,194,.5)"/>
+  <circle cx="520" cy="90" r="8" fill="rgba(255,208,138,.5)"/>
+  <circle cx="540" cy="290" r="7" fill="rgba(63,224,197,.45)"/>
+</svg>

@@ -1,26 +1,92 @@
 ---
 title: Inclusive Culture and DE&I Strategy
 order: 9
+tileImage: /images/portfolio/tile-dei.svg
+tileImageAlt: "Abstract artwork of diverse circles inside a soft glowing boundary"
+description: "How I helped found and lead Activision Blizzard's EMEA Disability Network, building a 70-member community and a 'come as you are' philosophy."
 ---
 {% from "partials/project-section.njk" import section %}
+{% from "partials/project-stat-band.njk" import statBand %}
+{% from "partials/project-pull-quote.njk" import pullQuote %}
 
 <div class="project-head">
   <div class="project-crumb">Portfolio · Case study</div>
-  <h1>{{ title }}</h1>
-  <p class="project-summary">This is a one-paragraph summary of the project, its main goal, and the key result. It should be concise and compelling.</p>
-  <div class="project-banner ph g9"></div>
+  <h1>Inclusive Culture &amp; DE&amp;I Strategy</h1>
+  <p class="project-summary">When Activision Blizzard's first EMEA DE&amp;I Manager set out to bring the company's US-centric employee networks to our region, I volunteered to lead the new Disability Network chapter. Over the following years, a team of six of us built it from a lunchtime idea into a community of around 70 members, with a programme of awareness initiatives that changed how openly our offices talked about neurodiversity, mental load and invisible disability. It is the work that shaped my "come as you are" philosophy more than anything else in my career.</p>
+
+  <div class="project-banner" role="img" aria-label="Abstract graphic of diverse circles gently connected inside a soft glowing boundary">
+    <svg viewBox="0 0 920 210" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ring" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#3fe0c5"/><stop offset="1" stop-color="#ffd08a"/>
+        </linearGradient>
+        <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="rgba(63,224,197,.14)"/><stop offset="1" stop-color="rgba(63,224,197,0)"/>
+        </radialGradient>
+      </defs>
+      <!-- soft glow field -->
+      <ellipse cx="460" cy="105" rx="330" ry="95" fill="url(#glow)"/>
+      <!-- safe space boundary -->
+      <ellipse cx="460" cy="105" rx="300" ry="80" fill="none" stroke="url(#ring)" stroke-width="2" stroke-dasharray="10 12" opacity=".8"/>
+      <!-- gentle connections -->
+      <g stroke="rgba(163,184,194,.3)" stroke-width="1.2">
+        <line x1="290" y1="105" x2="370" y2="70"/><line x1="370" y1="70" x2="460" y2="120"/>
+        <line x1="460" y1="120" x2="545" y2="75"/><line x1="545" y1="75" x2="630" y2="115"/>
+        <line x1="290" y1="105" x2="380" y2="145"/><line x1="380" y1="145" x2="460" y2="120"/>
+        <line x1="545" y1="75" x2="460" y2="120"/><line x1="630" y1="115" x2="550" y2="150"/>
+        <line x1="550" y1="150" x2="460" y2="120"/>
+      </g>
+      <!-- diverse circles: all palette colours, varied sizes -->
+      <g>
+        <circle cx="290" cy="105" r="16" fill="#3fe0c5"/>
+        <circle cx="370" cy="70" r="11" fill="#ff8e7a"/>
+        <circle cx="460" cy="120" r="19" fill="#ffd08a"/>
+        <circle cx="545" cy="75" r="12" fill="#f4f1e8"/>
+        <circle cx="630" cy="115" r="15" fill="#3fe0c5" opacity=".8"/>
+        <circle cx="380" cy="145" r="9" fill="#a3b8c2"/>
+        <circle cx="550" cy="150" r="10" fill="#ff8e7a" opacity=".85"/>
+      </g>
+      <!-- a few circles outside, drifting toward the space -->
+      <circle cx="130" cy="60" r="7" fill="rgba(163,184,194,.5)"/>
+      <circle cx="800" cy="140" r="8" fill="rgba(255,208,138,.5)"/>
+      <circle cx="770" cy="55" r="6" fill="rgba(63,224,197,.45)"/>
+      <!-- stars -->
+      <g fill="#f4f1e8">
+        <circle cx="90" cy="170" r="1.4" opacity=".35"/><circle cx="860" cy="35" r="1.3" opacity=".3"/>
+        <circle cx="700" cy="185" r="1.2" opacity=".3"/>
+      </g>
+    </svg>
+  </div>
+
+  {{ statBand([
+    { value: "70", label: "members across the EMEA region" },
+    { value: "6", label: "volunteers, one shared mission" },
+    { value: "3–5 hrs", label: "a week, alongside the day job" },
+    { value: "Monthly", label: "SafeSpace sessions, open to everyone" }
+  ]) }}
 </div>
 
 <div class="project-body">
   {% call section("My Role & Responsibilities") %}
-  <p>Describe your specific role in this project. What were you responsible for? Did you lead the project, or were you a key contributor? Use bullet points if it helps clarify your tasks.</p>
+  <ul>
+    <li>Led the EMEA Disability Network chapter from its founding, coordinating a committee of six alongside our day jobs (typically three to five hours a week, each)</li>
+    <li>Represented our chapter within the company's global Disability Network</li>
+    <li>Shaped the network's focus areas and programme: neurodiversity awareness, stress and burnout resilience, and open conversation formats</li>
+    <li>Built membership and visibility across the region's offices, growing the community to roughly 70 members</li>
+  </ul>
   {% endcall %}
 
   {% call section("The Challenge") %}
-  <p>What was the business problem or challenge that this project was designed to solve? Provide some context for the reader.</p>
+  <p>Before our region had dedicated DE&amp;I support, disability was the quiet corner of inclusion: not a visible crisis, but not a conversation either. People didn't talk much about neurodiversity in a company where, like much of tech and gaming, neurodivergent colleagues are a meaningful part of the workforce. Stress and burnout were periodic realities of the business, with intensity spiking around every game launch. And the topic itself is delicate: nobody should ever feel pressured to disclose. The challenge was to create awareness and openness without ever putting an individual on the spot.</p>
+
+  {{ pullQuote('"Creating the safe space is just as important as building the diverse team in the first place."', "The lesson that shapes how I do HR today") }}
   {% endcall %}
 
   {% call section("The Solution & Outcome") %}
-  <p>Explain the solution you implemented. How did it address the challenge? Most importantly, what were the results? Use metrics and data if possible (e.g., "reduced employee turnover by 15%," "improved engagement scores by 20%").</p>
+  <p>We went where the impact was. Our neurodiversity Lunch and Learns brought external speakers into the office and onto Zoom, teaching practical changes anyone could make: sending agendas before meetings, offering different ways to communicate, small adjustments with outsized effects. (Free lunch, it turns out, is a great inclusion strategy in itself.) For stress and burnout, we ran sessions on recognising early warning signs and practical defences, and our resident mindfulness practitioner, unofficially our Mindfulness Master, launched half-hour "Mindfulness Mondays" to start each week with a clear head. I'll admit I found the idea slightly odd at first. Then I attended a few, and became a convert.</p>
+  <p>The initiative I'm proudest of is SafeSpace: a monthly open session where anyone could bring difficult topics, with one firm rule, that whatever was said stayed in the room. Members and colleagues suggested the themes, and the sessions gave people a place to be honest without being judged.</p>
+  <p>The change was visible. Neurodiversity went from something rarely mentioned to something colleagues were aware of, comfortable with, and in some cases loud and proud about. Session feedback was consistently excellent, Mindfulness Mondays became a fixture, and I'm convinced many colleagues became more comfortable bringing their whole selves to work, disabilities included.</p>
+  <p>There's a personal reason this work matters to me. During a short stint at SEGA when I first moved to London, I took part in a 24-hour livestream raising donations for SpecialEffect, a charity that builds custom hardware so disabled people can play video games. Gaming is a massive part of my life, and the thought of losing access to it made the point better than any policy paper could. When I was asked to help build the Disability Network, saying yes took about a second.</p>
+  <p>What leading this network taught me: everyone brings a different background to work, and we are often too quick to label someone an underperformer when a small change in approach would make their role accessible. I fully believe diverse teams produce better results. But that's only true if people can share their views openly without being judged. Creating the safe space is just as important as building the diverse team in the first place.</p>
   {% endcall %}
 </div>

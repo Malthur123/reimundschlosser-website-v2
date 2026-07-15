@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — Inclusive Culture &amp; DE&amp;I Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#10222e; --surface:#173040; --surface-2:#1d3b4e;
+    --ink:#f4f1e8; --muted:#a3b8c2;
+    --teal:#3fe0c5; --coral:#ff8e7a; --sun:#ffd08a;
+    --radius:20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Lato',system-ui,sans-serif;line-height:1.7;overflow-x:hidden;
+    background-image:radial-gradient(1px 1px at 12% 18%, rgba(244,241,232,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 78% 8%, rgba(244,241,232,.3) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 55% 30%, rgba(255,208,138,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 30% 60%, rgba(244,241,232,.22) 50%, transparent 51%),
+      radial-gradient(1px 1px at 90% 45%, rgba(63,224,197,.3) 50%, transparent 51%);
+    background-attachment:fixed}
+  h1,h2,h3,.brand{font-family:'Sora',system-ui,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(16,34,46,.8);border-bottom:1px solid rgba(63,224,197,.14)}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;max-width:1080px;margin:0 auto}
+  .brand{font-weight:700;font-size:1.05rem}
+  .brand em{font-style:normal;color:var(--teal)}
+  .links{display:flex;gap:28px;font-size:.92rem;color:var(--muted)}
+  .links a:hover{color:var(--teal)}
+  .links a.active{color:var(--ink);border-bottom:2px solid var(--teal);padding-bottom:3px}
+
+  .detail-head{padding:64px 0 8px}
+  .crumb{color:var(--teal);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;margin-bottom:16px;line-height:1.2}
+  .summary{color:var(--muted);font-size:1.08rem;max-width:66ch}
+
+  .banner{border-radius:var(--radius);margin:36px 0 0;background:linear-gradient(140deg,#14303f,#1d3b4e 55%,#24515a);
+    border:1px solid rgba(63,224,197,.15);overflow:hidden}
+  .banner svg{display:block;width:100%;height:auto}
+
+  .stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 8px}
+  @media(max-width:700px){.stat-band{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--surface);border:1px solid rgba(63,224,197,.14);border-radius:16px;padding:20px 22px;text-align:center}
+  .stat b{display:block;font-family:'Sora';font-size:1.9rem;line-height:1.2;
+    background:linear-gradient(120deg,var(--teal),var(--sun));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{color:var(--muted);font-size:.84rem}
+
+  .detail-body{padding:26px 0 70px}
+  .detail-body h2{font-size:1.3rem;margin:38px 0 12px}
+  .detail-body h2::before{content:"";display:inline-block;width:22px;height:6px;border-radius:3px;margin-right:12px;vertical-align:middle;
+    background:linear-gradient(90deg,var(--teal),var(--sun))}
+  .detail-body p{color:var(--muted);max-width:70ch;margin-bottom:14px}
+  .detail-body li{color:var(--muted);margin:0 0 10px 22px;max-width:66ch}
+  .detail-body li::marker{color:var(--teal)}
+
+  .pull{margin:40px 0;padding:28px 34px;background:var(--surface);border-radius:var(--radius);
+    border-left:5px solid;border-image:linear-gradient(180deg,var(--teal),var(--sun)) 1}
+  .pull p{font-family:'Sora';font-weight:600;font-size:1.25rem;color:var(--ink);line-height:1.5;margin:0;max-width:none}
+  .pull span{display:block;color:var(--muted);font-size:.85rem;margin-top:10px;font-family:'Lato'}
+
+  .back{display:inline-flex;align-items:center;gap:8px;margin-top:40px;padding:12px 24px;border-radius:999px;
+    border:1.5px solid var(--teal);color:var(--teal);font-weight:700;font-size:.92rem;transition:transform .15s ease;cursor:pointer;background:none;font-family:'Lato'}
+  .back:hover{transform:translateX(-3px)}
+
+  footer{border-top:1px solid rgba(63,224,197,.12);padding:52px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;text-align:center;max-width:1080px;margin:0 auto;padding:0 24px}
+  @media(max-width:640px){.foot-grid{grid-template-columns:1fr}}
+  .foot-grid .col:first-child{text-align:left}
+  .foot-grid .col:last-child{text-align:right}
+  @media(max-width:640px){.foot-grid .col:first-child,.foot-grid .col:last-child{text-align:center}}
+  .foot-grid b{font-family:'Sora';display:block;margin-bottom:6px;color:var(--ink)}
+  .foot-grid span{color:var(--muted);font-size:.92rem}
+  .foot-grid a{color:var(--teal)}
+  .copyright{text-align:center;color:var(--muted);font-size:.82rem;margin-top:36px}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner">
+  <a class="brand" href="#">REIMUND<em>SCHLOSSER</em></a>
+  <div class="links"><a href="#">About</a><a class="active" href="#">Portfolio</a><a href="#">Blog</a><a href="#">Contact</a></div>
+</div></nav>
+
+<div class="wrap">
+  <div class="detail-head">
+    <div class="crumb">Portfolio · Case study</div>
+    <h1>Inclusive Culture &amp; DE&amp;I Strategy</h1>
+    <p class="summary">When Activision Blizzard's first EMEA DE&amp;I Manager set out to bring the company's US-centric employee networks to our region, I volunteered to lead the new Disability Network chapter. Over the following years, a team of six of us built it from a lunchtime idea into a community of around 70 members, with a programme of awareness initiatives that changed how openly our offices talked about neurodiversity, mental load and invisible disability. It is the work that shaped my "come as you are" philosophy more than anything else in my career.</p>
+
+    <!-- Abstract banner: diverse circles held in a safe glowing space -->
+    <div class="banner" role="img" aria-label="Abstract graphic of diverse circles gently connected inside a soft glowing boundary">
+      <svg viewBox="0 0 920 210" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="ring" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#3fe0c5"/><stop offset="1" stop-color="#ffd08a"/>
+          </linearGradient>
+          <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+            <stop offset="0" stop-color="rgba(63,224,197,.14)"/><stop offset="1" stop-color="rgba(63,224,197,0)"/>
+          </radialGradient>
+        </defs>
+        <!-- soft glow field -->
+        <ellipse cx="460" cy="105" rx="330" ry="95" fill="url(#glow)"/>
+        <!-- safe space boundary -->
+        <ellipse cx="460" cy="105" rx="300" ry="80" fill="none" stroke="url(#ring)" stroke-width="2" stroke-dasharray="10 12" opacity=".8"/>
+        <!-- gentle connections -->
+        <g stroke="rgba(163,184,194,.3)" stroke-width="1.2">
+          <line x1="290" y1="105" x2="370" y2="70"/><line x1="370" y1="70" x2="460" y2="120"/>
+          <line x1="460" y1="120" x2="545" y2="75"/><line x1="545" y1="75" x2="630" y2="115"/>
+          <line x1="290" y1="105" x2="380" y2="145"/><line x1="380" y1="145" x2="460" y2="120"/>
+          <line x1="545" y1="75" x2="460" y2="120"/><line x1="630" y1="115" x2="550" y2="150"/>
+          <line x1="550" y1="150" x2="460" y2="120"/>
+        </g>
+        <!-- diverse circles: all palette colours, varied sizes -->
+        <g>
+          <circle cx="290" cy="105" r="16" fill="#3fe0c5"/>
+          <circle cx="370" cy="70" r="11" fill="#ff8e7a"/>
+          <circle cx="460" cy="120" r="19" fill="#ffd08a"/>
+          <circle cx="545" cy="75" r="12" fill="#f4f1e8"/>
+          <circle cx="630" cy="115" r="15" fill="#3fe0c5" opacity=".8"/>
+          <circle cx="380" cy="145" r="9" fill="#a3b8c2"/>
+          <circle cx="550" cy="150" r="10" fill="#ff8e7a" opacity=".85"/>
+        </g>
+        <!-- a few circles outside, drifting toward the space -->
+        <circle cx="130" cy="60" r="7" fill="rgba(163,184,194,.5)"/>
+        <circle cx="800" cy="140" r="8" fill="rgba(255,208,138,.5)"/>
+        <circle cx="770" cy="55" r="6" fill="rgba(63,224,197,.45)"/>
+        <!-- stars -->
+        <g fill="#f4f1e8">
+          <circle cx="90" cy="170" r="1.4" opacity=".35"/><circle cx="860" cy="35" r="1.3" opacity=".3"/>
+          <circle cx="700" cy="185" r="1.2" opacity=".3"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="stat-band">
+      <div class="stat"><b>70</b><span>members across the EMEA region</span></div>
+      <div class="stat"><b>6</b><span>volunteers, one shared mission</span></div>
+      <div class="stat"><b>3–5 hrs</b><span>a week, alongside the day job</span></div>
+      <div class="stat"><b>Monthly</b><span>SafeSpace sessions, open to everyone</span></div>
+    </div>
+  </div>
+
+  <div class="detail-body">
+    <h2>My Role &amp; Responsibilities</h2>
+    <ul>
+      <li>Led the EMEA Disability Network chapter from its founding, coordinating a committee of six alongside our day jobs (typically three to five hours a week, each)</li>
+      <li>Represented our chapter within the company's global Disability Network</li>
+      <li>Shaped the network's focus areas and programme: neurodiversity awareness, stress and burnout resilience, and open conversation formats</li>
+      <li>Built membership and visibility across the region's offices, growing the community to roughly 70 members</li>
+    </ul>
+
+    <h2>The Challenge</h2>
+    <p>Before our region had dedicated DE&amp;I support, disability was the quiet corner of inclusion: not a visible crisis, but not a conversation either. People didn't talk much about neurodiversity in a company where, like much of tech and gaming, neurodivergent colleagues are a meaningful part of the workforce. Stress and burnout were periodic realities of the business, with intensity spiking around every game launch. And the topic itself is delicate: nobody should ever feel pressured to disclose. The challenge was to create awareness and openness without ever putting an individual on the spot.</p>
+
+    <div class="pull">
+      <p>"Creating the safe space is just as important as building the diverse team in the first place."</p>
+      <span>The lesson that shapes how I do HR today</span>
+    </div>
+
+    <h2>The Solution &amp; Outcome</h2>
+    <p>We went where the impact was. Our neurodiversity Lunch and Learns brought external speakers into the office and onto Zoom, teaching practical changes anyone could make: sending agendas before meetings, offering different ways to communicate, small adjustments with outsized effects. (Free lunch, it turns out, is a great inclusion strategy in itself.) For stress and burnout, we ran sessions on recognising early warning signs and practical defences, and our resident mindfulness practitioner, unofficially our Mindfulness Master, launched half-hour "Mindfulness Mondays" to start each week with a clear head. I'll admit I found the idea slightly odd at first. Then I attended a few, and became a convert.</p>
+    <p>The initiative I'm proudest of is SafeSpace: a monthly open session where anyone could bring difficult topics, with one firm rule, that whatever was said stayed in the room. Members and colleagues suggested the themes, and the sessions gave people a place to be honest without being judged.</p>
+    <p>The change was visible. Neurodiversity went from something rarely mentioned to something colleagues were aware of, comfortable with, and in some cases loud and proud about. Session feedback was consistently excellent, Mindfulness Mondays became a fixture, and I'm convinced many colleagues became more comfortable bringing their whole selves to work, disabilities included.</p>
+    <p>There's a personal reason this work matters to me. During a short stint at SEGA when I first moved to London, I took part in a 24-hour livestream raising donations for SpecialEffect, a charity that builds custom hardware so disabled people can play video games. Gaming is a massive part of my life, and the thought of losing access to it made the point better than any policy paper could. When I was asked to help build the Disability Network, saying yes took about a second.</p>
+    <p>What leading this network taught me: everyone brings a different background to work, and we are often too quick to label someone an underperformer when a small change in approach would make their role accessible. I fully believe diverse teams produce better results. But that's only true if people can share their views openly without being judged. Creating the safe space is just as important as building the diverse team in the first place.</p>
+
+    <button class="back">← Back to Portfolio</button>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="foot-grid">
+      <div class="col"><b>Reimund Schlosser</b><span>Global People &amp; Culture Business Partner</span></div>
+      <div class="col"><b>Location</b><span>Bromley, South London, UK</span></div>
+      <div class="col"><b>Contact</b><span><a href="mailto:hey@reimundschlosser.com">hey@reimundschlosser.com</a></span></div>
+    </div>
+    <div class="copyright">© 2026 Reimund Schlosser</div>
+  </div>
+</footer>
+
+</body>
+</html>
