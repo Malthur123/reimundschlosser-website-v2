@@ -11,6 +11,7 @@
 .tile:hover { transform: translateY(-5px); border-color: rgba(255, 208, 138, .5); }
 .tile .ph { height: 170px; position: relative; display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center; }
 .tile .ph .num { font-family: 'Sora'; font-weight: 700; font-size: 3.4rem; color: rgba(244, 241, 232, .22); letter-spacing: .04em; }
+.tile .ph-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .tile h3 { font-size: 1.02rem; padding: 18px 22px 6px; line-height: 1.45; }
 .tile .more { color: var(--teal); font-size: .85rem; padding: 0 22px 20px; display: block; }
 

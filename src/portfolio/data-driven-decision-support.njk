@@ -1,26 +1,94 @@
 ---
 title: Data-Driven Decision Support
 order: 4
+tileImage: /images/portfolio/tile-data-driven.svg
+tileImageAlt: "Abstract dashboard artwork with bar chart, donut and trend line"
+description: "How I built EMEA's first fit-for-purpose people analytics dashboard at Activision Blizzard, from manual extracts to a live Workday-based reporting stack."
 ---
 {% from "partials/project-section.njk" import section %}
+{% from "partials/project-stat-band.njk" import statBand %}
+{% from "partials/project-pull-quote.njk" import pullQuote %}
 
 <div class="project-head">
   <div class="project-crumb">Portfolio · Case study</div>
   <h1>{{ title }}</h1>
-  <p class="project-summary">This is a one-paragraph summary of the project, its main goal, and the key result. It should be concise and compelling.</p>
-  <div class="project-banner ph g4"></div>
+  <p class="project-summary">At Activision Blizzard, EMEA leadership was flying with instruments calibrated for a different continent: the existing US-built dashboard couldn't represent our region's far more complex entity landscape. So I built our own people analytics capability from scratch — starting with monthly Workday extracts and highly engineered spreadsheets, evolving into live Workday-based dashboards — covering headcount, attrition, hiring, DE&amp;I, and cost data across the entire region. It became the People team's monthly single source of truth, and it changed real decisions: one insight I surfaced helped unlock a region-wide training initiative.</p>
+
+  <div class="project-banner" role="img" aria-label="Abstract dashboard graphic with charts and a rising trend line">
+    <svg viewBox="0 0 920 210" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="tg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#3fe0c5"/><stop offset="1" stop-color="#ffd08a"/>
+        </linearGradient>
+      </defs>
+      <!-- faint grid -->
+      <g stroke="rgba(163,184,194,.12)" stroke-width="1">
+        <line x1="60" y1="40" x2="60" y2="180"/><line x1="60" y1="180" x2="880" y2="180"/>
+        <line x1="60" y1="110" x2="880" y2="110" stroke-dasharray="3 6"/>
+        <line x1="60" y1="75" x2="880" y2="75" stroke-dasharray="3 6"/>
+        <line x1="60" y1="145" x2="880" y2="145" stroke-dasharray="3 6"/>
+      </g>
+      <!-- bar chart: one coral bar stands out -->
+      <g>
+        <rect x="100" y="120" width="34" height="60" rx="6" fill="rgba(63,224,197,.45)"/>
+        <rect x="150" y="95" width="34" height="85" rx="6" fill="rgba(63,224,197,.6)"/>
+        <rect x="200" y="60" width="34" height="120" rx="6" fill="#ff8e7a"/>
+        <rect x="250" y="105" width="34" height="75" rx="6" fill="rgba(63,224,197,.75)"/>
+        <rect x="300" y="82" width="34" height="98" rx="6" fill="rgba(63,224,197,.55)"/>
+      </g>
+      <!-- donut chart -->
+      <g transform="translate(470,105)">
+        <circle r="46" fill="none" stroke="rgba(163,184,194,.25)" stroke-width="16"/>
+        <circle r="46" fill="none" stroke="url(#tg)" stroke-width="16"
+          stroke-dasharray="219 289" stroke-linecap="round" transform="rotate(-90)"/>
+        <text x="0" y="7" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700"
+          font-size="24" fill="#f4f1e8">76%</text>
+      </g>
+      <!-- rising trend line -->
+      <g>
+        <polyline points="580,160 640,140 700,150 760,100 820,110 870,60"
+          fill="none" stroke="url(#tg)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="580" cy="160" r="5" fill="#3fe0c5"/>
+        <circle cx="700" cy="150" r="5" fill="#7fd9c8"/>
+        <circle cx="760" cy="100" r="5" fill="#c9d0a0"/>
+        <circle cx="870" cy="60" r="6" fill="#ffd08a"/>
+      </g>
+      <!-- stars -->
+      <g fill="#f4f1e8">
+        <circle cx="90" cy="30" r="1.4" opacity=".35"/><circle cx="540" cy="25" r="1.3" opacity=".3"/>
+        <circle cx="860" cy="190" r="1.2" opacity=".3"/><circle cx="640" cy="45" r="1.5" opacity=".28"/>
+      </g>
+    </svg>
+  </div>
+
+  {{ statBand([
+    { value: "76%", label: "of women had a male manager — the insight that unlocked an initiative" },
+    { value: "EMEA-wide", label: "coverage, expanded from a single client group" },
+    { value: "0 → 1", label: "the region's first fit-for-purpose people dashboard" },
+    { value: "Monthly", label: "leadership reporting rhythm, sustained" }
+  ]) }}
 </div>
 
 <div class="project-body">
   {% call section("My Role & Responsibilities") %}
-  <p>Describe your specific role in this project. What were you responsible for? Did you lead the project, or were you a key contributor? Use bullet points if it helps clarify your tasks.</p>
+  <ul>
+    <li>Designed and built the entire reporting stack solo: data extraction, categorisation logic, metric definitions, visualisations, and a monthly stakeholder-ready reporting pack</li>
+    <li>Made the case for expanded data access — winning support to cover the full EMEA region rather than just my own client groups</li>
+    <li>Drove a structural data cleanup in Workday, working with HR Tech to introduce a new field distinguishing the entity someone <em>contributes to</em> from the entity that <em>employs them</em> — fixing a systematic distortion in our regional data</li>
+    <li>Co-advocated successfully for the introduction of Workday Sheets, moving the whole setup from manual extracts to live data</li>
+  </ul>
   {% endcall %}
 
   {% call section("The Challenge") %}
-  <p>What was the business problem or challenge that this project was designed to solve? Provide some context for the reader.</p>
+  <p>A dashboard existed — but it was built by a US team, around US assumptions. Splitting the world into Activision, Blizzard, and King made sense in Los Angeles; in EMEA, it didn't survive contact with reality. We had corporate people assigned to two entities at once, a landscape of individual studios each deserving their own view, and remote employees whose employing entity said more about geography than about the work they actually did. The result: regional data that was skewed, questions that took forever to answer, and decisions that deserved better evidence than they were getting.</p>
+
+  {{ pullQuote('"I asked the data a question nobody had asked before: how many women report to a man? The answer — 76% — changed the conversation."', "The insight that helped a training initiative get signed off") }}
   {% endcall %}
 
   {% call section("The Solution & Outcome") %}
-  <p>Explain the solution you implemented. How did it address the challenge? Most importantly, what were the results? Use metrics and data if possible (e.g., "reduced employee turnover by 15%," "improved engagement scores by 20%").</p>
+  <p>I rebuilt our view of the region from the ground up — and I mean <em>ground</em>: monthly report downloads, deeply nested COUNTIFS and lookups, self-taught from forums in the days before AI could help, turned into linked charts and a monthly deck for the team and senior stakeholders. The harder win was structural: getting the data itself fixed in Workday so every future report — not just mine — told the truth about who worked where.</p>
+  <p>The moment that proved the whole endeavour: our Women's network wanted to introduce menopause awareness training, including for managers, and asked me for supporting data. The gender splits alone told a muddled story — near 50/50 in corporate entities, heavily male in studios and tech. So I asked the data a question nobody had asked before: how many women report to a man? The answer — 76% — landed instantly. It reframed the entire case: this wasn't only about supporting women through menopause, it was about equipping the managers most of them actually have. The initiative was signed off.</p>
+  <p>The toolkit kept evolving well beyond that first dashboard. In my time at Teads, I took it a step further and built a compensation dashboard together with a colleague using Claude Code, and put AI to work analysing trends and patterns across our people data — proof that self-made solutions can approach the sophistication of enterprise BI tools while being shaped exactly to the team that uses them.</p>
+  <p>What working with people data has taught me: in large multinational organisations, the data is always more complex than it looks, and understanding the company's structure has to come before building anything on top of it. And the real craft isn't collecting data points — it's knowing what story each one can honestly tell. Sometimes the data proves your assumption wrong after weeks of work. That's not failure; that's the day you actually learned something.</p>
   {% endcall %}
 </div>
