@@ -1,0 +1,26 @@
+---
+title: Data-Driven Decision Support
+order: 4
+---
+{% from "partials/project-section.njk" import section %}
+
+<div class="project-head">
+  <div class="project-crumb">Portfolio · Case study</div>
+  <h1>{{ title }}</h1>
+  <p class="project-summary">This is a one-paragraph summary of the project, its main goal, and the key result. It should be concise and compelling.</p>
+  <div class="project-banner ph g4"></div>
+</div>
+
+<div class="project-body">
+  {% call section("My Role & Responsibilities") %}
+  <p>Describe your specific role in this project. What were you responsible for? Did you lead the project, or were you a key contributor? Use bullet points if it helps clarify your tasks.</p>
+  {% endcall %}
+
+  {% call section("The Challenge") %}
+  <p>What was the business problem or challenge that this project was designed to solve? Provide some context for the reader.</p>
+  {% endcall %}
+
+  {% call section("The Solution & Outcome") %}
+  <p>Explain the solution you implemented. How did it address the challenge? Most importantly, what were the results? Use metrics and data if possible (e.g., "reduced employee turnover by 15%," "improved engagement scores by 20%").</p>
+  {% endcall %}
+</div>

@@ -1,0 +1,16 @@
+{#- Optional component, extracted from design/project-mna-visual-concept.html.
+    Usage:
+      {% from "partials/project-stat-band.njk" import statBand %}
+      {{ statBand([
+        { value: "~250", label: "people in the EMEA GTM org" },
+        { value: "7%", label: "attrition, contained during peak uncertainty" }
+      ]) }}
+    Works with any number of stats; the design was built for 4 across desktop,
+    dropping to 2 per row under 700px. -#}
+{% macro statBand(stats) %}
+<div class="stat-band">
+  {%- for s in stats %}
+  <div class="stat"><b>{{ s.value }}</b><span>{{ s.label }}</span></div>
+  {%- endfor %}
+</div>
+{% endmacro %}

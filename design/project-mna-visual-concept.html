@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — Org Design &amp; M&amp;A Integration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#10222e; --surface:#173040; --surface-2:#1d3b4e;
+    --ink:#f4f1e8; --muted:#a3b8c2;
+    --teal:#3fe0c5; --coral:#ff8e7a; --sun:#ffd08a;
+    --radius:20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Lato',system-ui,sans-serif;line-height:1.7;overflow-x:hidden;
+    background-image:radial-gradient(1px 1px at 12% 18%, rgba(244,241,232,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 78% 8%, rgba(244,241,232,.3) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 55% 30%, rgba(255,208,138,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 30% 60%, rgba(244,241,232,.22) 50%, transparent 51%),
+      radial-gradient(1px 1px at 90% 45%, rgba(63,224,197,.3) 50%, transparent 51%);
+    background-attachment:fixed}
+  h1,h2,h3,.brand{font-family:'Sora',system-ui,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(16,34,46,.8);border-bottom:1px solid rgba(63,224,197,.14)}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;max-width:1080px;margin:0 auto}
+  .brand{font-weight:700;font-size:1.05rem}
+  .brand em{font-style:normal;color:var(--teal)}
+  .links{display:flex;gap:28px;font-size:.92rem;color:var(--muted)}
+  .links a:hover{color:var(--teal)}
+  .links a.active{color:var(--ink);border-bottom:2px solid var(--teal);padding-bottom:3px}
+
+  .detail-head{padding:64px 0 8px}
+  .crumb{color:var(--teal);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;margin-bottom:16px;line-height:1.2}
+  .summary{color:var(--muted);font-size:1.08rem;max-width:66ch}
+
+  /* BANNER: abstract network transformation */
+  .banner{border-radius:var(--radius);margin:36px 0 0;background:linear-gradient(140deg,#14303f,#1d3b4e 55%,#24515a);
+    border:1px solid rgba(63,224,197,.15);overflow:hidden}
+  .banner svg{display:block;width:100%;height:auto}
+
+  /* STAT BAND */
+  .stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 8px}
+  @media(max-width:700px){.stat-band{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--surface);border:1px solid rgba(63,224,197,.14);border-radius:16px;padding:20px 22px;text-align:center}
+  .stat b{display:block;font-family:'Sora';font-size:1.9rem;line-height:1.2;
+    background:linear-gradient(120deg,var(--teal),var(--sun));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{color:var(--muted);font-size:.84rem}
+
+  /* BODY */
+  .detail-body{padding:26px 0 70px}
+  .detail-body h2{font-size:1.3rem;margin:38px 0 12px}
+  .detail-body h2::before{content:"";display:inline-block;width:22px;height:6px;border-radius:3px;margin-right:12px;vertical-align:middle;
+    background:linear-gradient(90deg,var(--teal),var(--sun))}
+  .detail-body p{color:var(--muted);max-width:70ch;margin-bottom:14px}
+  .detail-body li{color:var(--muted);margin:0 0 10px 22px;max-width:66ch}
+  .detail-body li::marker{color:var(--teal)}
+
+  /* PULL QUOTE */
+  .pull{margin:40px 0;padding:28px 34px;background:var(--surface);border-radius:var(--radius);
+    border-left:5px solid transparent;position:relative;
+    border-image:linear-gradient(180deg,var(--teal),var(--sun)) 1;border-left-style:solid;border-left-width:5px}
+  .pull p{font-family:'Sora';font-weight:600;font-size:1.25rem;color:var(--ink);line-height:1.5;margin:0;max-width:none}
+  .pull span{display:block;color:var(--muted);font-size:.85rem;margin-top:10px;font-family:'Lato'}
+
+  /* PHASE TIMELINE */
+  .phases{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:26px 0 12px;position:relative}
+  @media(max-width:700px){.phases{grid-template-columns:repeat(2,1fr);row-gap:26px}}
+  .phases::before{content:"";position:absolute;top:7px;left:12%;right:12%;height:2px;
+    background:linear-gradient(90deg,var(--teal),var(--sun));opacity:.5}
+  @media(max-width:700px){.phases::before{display:none}}
+  .phase{text-align:center;padding:0 10px;position:relative}
+  .phase .p-dot{width:14px;height:14px;border-radius:50%;background:var(--teal);margin:0 auto 12px;
+    box-shadow:0 0 12px rgba(63,224,197,.7);position:relative;z-index:1}
+  .phase:nth-child(2) .p-dot{background:#7fd9c8}
+  .phase:nth-child(3) .p-dot{background:#c9d0a0}
+  .phase:nth-child(4) .p-dot{background:var(--sun);box-shadow:0 0 12px rgba(255,208,138,.7)}
+  .phase h3{font-size:.95rem;margin-bottom:4px}
+  .phase p{color:var(--muted);font-size:.84rem;line-height:1.5;margin:0}
+
+  .back{display:inline-flex;align-items:center;gap:8px;margin-top:40px;padding:12px 24px;border-radius:999px;
+    border:1.5px solid var(--teal);color:var(--teal);font-weight:700;font-size:.92rem;transition:transform .15s ease;cursor:pointer;background:none;font-family:'Lato'}
+  .back:hover{transform:translateX(-3px)}
+
+  footer{border-top:1px solid rgba(63,224,197,.12);padding:52px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;text-align:center;max-width:1080px;margin:0 auto;padding:0 24px}
+  @media(max-width:640px){.foot-grid{grid-template-columns:1fr}}
+  .foot-grid .col:first-child{text-align:left}
+  .foot-grid .col:last-child{text-align:right}
+  @media(max-width:640px){.foot-grid .col:first-child,.foot-grid .col:last-child{text-align:center}}
+  .foot-grid b{font-family:'Sora';display:block;margin-bottom:6px;color:var(--ink)}
+  .foot-grid span{color:var(--muted);font-size:.92rem}
+  .foot-grid a{color:var(--teal)}
+  .copyright{text-align:center;color:var(--muted);font-size:.82rem;margin-top:36px}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner">
+  <a class="brand" href="#">REIMUND<em>SCHLOSSER</em></a>
+  <div class="links"><a href="#">About</a><a class="active" href="#">Portfolio</a><a href="#">Blog</a><a href="#">Contact</a></div>
+</div></nav>
+
+<div class="wrap">
+  <div class="detail-head">
+    <div class="crumb">Portfolio · Case study</div>
+    <h1>Org Design &amp; M&amp;A Integration</h1>
+    <p class="summary">Following Microsoft's acquisition of Activision Blizzard, our EMEA Go-to-Market organisation — a team of roughly 250 — was asked to reduce headcount by 60 roles as part of wider efficiency goals across the gaming business. I was at the centre of the people side of this transformation: co-designing the future organisation with our MD, planning and executing the reduction with dignity, and helping the remaining team rediscover its footing.</p>
+
+    <!-- Abstract banner: network reshaping into a smaller, tighter one -->
+    <div class="banner" role="img" aria-label="Abstract graphic of an organisation reshaping into a smaller, more connected network">
+      <svg viewBox="0 0 920 210" xmlns="http://www.w3.org/2000/svg">
+        <!-- left: larger loose network -->
+        <g stroke="rgba(163,184,194,.35)" stroke-width="1">
+          <line x1="90" y1="70" x2="160" y2="110"/><line x1="160" y1="110" x2="120" y2="160"/>
+          <line x1="160" y1="110" x2="230" y2="80"/><line x1="230" y1="80" x2="300" y2="130"/>
+          <line x1="120" y1="160" x2="200" y2="170"/><line x1="200" y1="170" x2="300" y2="130"/>
+          <line x1="90" y1="70" x2="170" y2="40"/><line x1="170" y1="40" x2="230" y2="80"/>
+          <line x1="240" y1="170" x2="300" y2="130"/><line x1="200" y1="170" x2="240" y2="170"/>
+        </g>
+        <g fill="rgba(163,184,194,.75)">
+          <circle cx="90" cy="70" r="6"/><circle cx="170" cy="40" r="5"/><circle cx="160" cy="110" r="7"/>
+          <circle cx="230" cy="80" r="6"/><circle cx="120" cy="160" r="5"/><circle cx="200" cy="170" r="6"/>
+          <circle cx="240" cy="170" r="4"/><circle cx="300" cy="130" r="7"/>
+          <circle cx="130" cy="35" r="3.5" opacity=".5"/><circle cx="270" cy="45" r="3.5" opacity=".5"/><circle cx="330" cy="75" r="3.5" opacity=".5"/>
+        </g>
+        <!-- transition arc -->
+        <path d="M370,105 C 430,60 490,150 545,105" fill="none" stroke="url(#grad)" stroke-width="2.5" stroke-dasharray="6 7"/>
+        <defs>
+          <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#3fe0c5"/><stop offset="1" stop-color="#ffd08a"/>
+          </linearGradient>
+        </defs>
+        <path d="M545,105 l-14,-7 l4,10 l-9,7 z" fill="#ffd08a"/>
+        <!-- right: smaller, tighter, glowing network -->
+        <g stroke="rgba(63,224,197,.55)" stroke-width="1.4">
+          <line x1="640" y1="100" x2="710" y2="65"/><line x1="640" y1="100" x2="715" y2="140"/>
+          <line x1="710" y1="65" x2="785" y2="100"/><line x1="715" y1="140" x2="785" y2="100"/>
+          <line x1="710" y1="65" x2="715" y2="140"/><line x1="785" y1="100" x2="845" y2="80"/>
+          <line x1="785" y1="100" x2="840" y2="140"/><line x1="845" y1="80" x2="840" y2="140"/>
+        </g>
+        <g>
+          <circle cx="640" cy="100" r="7" fill="#3fe0c5"/><circle cx="710" cy="65" r="6" fill="#3fe0c5"/>
+          <circle cx="715" cy="140" r="6" fill="#7fd9c8"/><circle cx="785" cy="100" r="8" fill="#ffd08a"/>
+          <circle cx="845" cy="80" r="5" fill="#ffd08a"/><circle cx="840" cy="140" r="5" fill="#ff8e7a"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- STAT BAND -->
+    <div class="stat-band">
+      <div class="stat"><b>~250</b><span>people in the EMEA GTM org</span></div>
+      <div class="stat"><b>Multi-country</b><span>consultation, executed with precision</span></div>
+      <div class="stat"><b>−4 pts</b><span>engagement dip — held stable through the storm</span></div>
+      <div class="stat"><b>7%</b><span>attrition, contained during peak uncertainty</span></div>
+    </div>
+  </div>
+
+  <div class="detail-body">
+    <h2>My Role &amp; Responsibilities</h2>
+    <ul>
+      <li>Planned the reduction end-to-end with the leadership team and in-house employment law counsel — including sensitive individual dimensions such as visa status and compliance considerations</li>
+      <li>Partnered directly with the Managing Director to design the future organisation: identifying priorities, defining the roles the new structure needed, and mapping existing talent against it</li>
+      <li>Participated in the collective consultation process and personally conducted notification conversations with affected employees</li>
+      <li>Led the human side of the aftermath: reassuring top talent of their place in the new organisation and being a consistent, open door for a shaken team</li>
+    </ul>
+
+    <h2>The Challenge</h2>
+    <p>Before the acquisition, this was a genuinely happy, high-performing organisation — which made the news land even harder. The reduction came as a shock to most (complete confidentiality meant there were no rumours to soften the blow), morale dropped sharply, and uncertainty began driving attrition in a team that had never had an attrition problem.</p>
+    <p>The task was twofold: execute a legally complex, multi-country reduction with speed and precision — and then bring a grieving team back to believing in its future.</p>
+
+    <div class="pull">
+      <p>"Several colleagues thanked me, emotionally, on their way out — because they felt treated like humans, not headcount."</p>
+      <span>The moment that defines how I approach every restructuring</span>
+    </div>
+
+    <h2>The Solution &amp; Outcome</h2>
+    <div class="phases">
+      <div class="phase"><div class="p-dot"></div><h3>Design</h3><p>New org built around priorities with the MD — not even cuts</p></div>
+      <div class="phase"><div class="p-dot"></div><h3>Consult</h3><p>Legally rigorous, individually sensitive, fully confidential</p></div>
+      <div class="phase"><div class="p-dot"></div><h3>Transition</h3><p>Every conversation held with dignity and empathy</p></div>
+      <div class="phase"><div class="p-dot"></div><h3>Rebuild</h3><p>Reassurance, open doors, and the slow return of spirit</p></div>
+    </div>
+    <p>We designed the new organisation around clear priorities rather than simply cutting evenly, which meant the smaller team could still fully support the franchise slate — aided by newly found efficiencies and closer collaboration with Xbox. For those who stayed, I invested heavily in one-to-one reassurance, and slowly the spirit returned: engagement held within four points of pre-acquisition levels, attrition stabilised at 7%, and the project was executed with remarkable accuracy and speed.</p>
+    <p>What this period taught me: in business-critical moments, a People team that trusts each other completely is not a nice-to-have — it's the thing that makes speed, precision and humanity possible at the same time.</p>
+
+    <button class="back">← Back to Portfolio</button>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="foot-grid">
+      <div class="col"><b>Reimund Schlosser</b><span>Global People &amp; Culture Business Partner</span></div>
+      <div class="col"><b>Location</b><span>Bromley, South London, UK</span></div>
+      <div class="col"><b>Contact</b><span><a href="mailto:hey@reimundschlosser.com">hey@reimundschlosser.com</a></span></div>
+    </div>
+    <div class="copyright">© 2026 Reimund Schlosser</div>
+  </div>
+</footer>
+
+</body>
+</html>

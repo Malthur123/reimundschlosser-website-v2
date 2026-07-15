@@ -21,18 +21,72 @@
 .g7 { background: linear-gradient(140deg, #274052, #7a5a62); } .g8 { background: linear-gradient(140deg, #1a3d55, #4a6a8a); }
 .g9 { background: linear-gradient(140deg, #254a4e, #946f4e); }
 
-/* PROJECT DETAIL */
+/* PROJECT DETAIL (blog post pages also use .detail-head / .detail-head h1 — see layouts/post.njk) */
 .detail-head { padding: 70px 0 30px; }
 .detail-head h1 { text-align: left; margin-bottom: 14px; }
-.summary { color: var(--muted); font-size: 1.1rem; max-width: 66ch; }
-.banner {
-  border-radius: var(--radius); height: 240px; margin: 34px 0 10px; position: relative;
-  display: flex; align-items: center; justify-content: center; background-size: cover; background-position: center;
+
+/* PROJECT PAGE TEMPLATE — see design/project-mna-visual-concept.html (reference implementation)
+   and _includes/layouts/project.njk (the minimal shared shell: nav, footer, back button).
+   Everything below is either structural (project-page/-head/-crumb/-summary/-banner/-body) or
+   an optional reusable component (stat-band, pull, phases) that individual pages opt into. */
+.project-page { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+.project-head { padding: 64px 0 8px; }
+.project-crumb { color: var(--teal); font-size: .85rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; margin-bottom: 14px; }
+.project-head h1 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
+.project-summary { color: var(--muted); font-size: 1.08rem; max-width: 66ch; }
+
+.project-banner {
+  border-radius: var(--radius); margin: 36px 0 0; background: linear-gradient(140deg, #14303f, #1d3b4e 55%, #24515a);
+  border: 1px solid rgba(63, 224, 197, .15); overflow: hidden;
 }
-.detail-body { padding: 20px 0 60px; }
-.detail-body h2 { font-size: 1.3rem; margin: 34px 0 10px; }
-.detail-body h2::before {
+.project-banner svg { display: block; width: 100%; height: auto; }
+.project-banner.ph { height: 220px; } /* simple placeholder banner, no SVG — reuses the .g1-.g9 gradients */
+
+.project-body { padding: 26px 0 70px; }
+.project-body h2 { font-size: 1.3rem; margin: 38px 0 12px; }
+.project-body h2::before {
   content: ""; display: inline-block; width: 22px; height: 6px; border-radius: 3px; margin-right: 12px; vertical-align: middle;
   background: linear-gradient(90deg, var(--teal), var(--sun));
 }
-.detail-body p { color: var(--muted); max-width: 70ch; }
+.project-body p { color: var(--muted); max-width: 70ch; margin-bottom: 14px; }
+.project-body li { color: var(--muted); margin: 0 0 10px 22px; max-width: 66ch; }
+.project-body li::marker { color: var(--teal); }
+.project-back { text-align: center; margin-bottom: 64px; }
+
+/* STAT BAND (optional component) */
+.stat-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 26px 0 8px; }
+@media (max-width: 700px) { .stat-band { grid-template-columns: repeat(2, 1fr); } }
+.stat { background: var(--surface); border: 1px solid rgba(63, 224, 197, .14); border-radius: 16px; padding: 20px 22px; text-align: center; }
+.stat b {
+  display: block; font-family: 'Sora'; font-size: 1.9rem; line-height: 1.2;
+  background: linear-gradient(120deg, var(--teal), var(--sun)); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.stat span { color: var(--muted); font-size: .84rem; }
+
+/* PULL QUOTE (optional component) */
+.pull {
+  margin: 40px 0; padding: 28px 34px; background: var(--surface); border-radius: var(--radius);
+  border-left: 5px solid transparent; position: relative;
+  border-image: linear-gradient(180deg, var(--teal), var(--sun)) 1; border-left-style: solid; border-left-width: 5px;
+}
+.pull p { font-family: 'Sora'; font-weight: 600; font-size: 1.25rem; color: var(--ink); line-height: 1.5; margin: 0; max-width: none; }
+.pull span { display: block; color: var(--muted); font-size: .85rem; margin-top: 10px; font-family: 'Lato'; }
+
+/* PHASE STRIP (optional component) */
+.phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 26px 0 12px; position: relative; }
+@media (max-width: 700px) { .phases { grid-template-columns: repeat(2, 1fr); row-gap: 26px; } }
+.phases::before {
+  content: ""; position: absolute; top: 7px; left: 12%; right: 12%; height: 2px;
+  background: linear-gradient(90deg, var(--teal), var(--sun)); opacity: .5;
+}
+@media (max-width: 700px) { .phases::before { display: none; } }
+.phase { text-align: center; padding: 0 10px; position: relative; }
+.phase .p-dot {
+  width: 14px; height: 14px; border-radius: 50%; background: var(--teal); margin: 0 auto 12px;
+  box-shadow: 0 0 12px rgba(63, 224, 197, .7); position: relative; z-index: 1;
+}
+.phase:nth-child(2) .p-dot { background: #7fd9c8; }
+.phase:nth-child(3) .p-dot { background: #c9d0a0; }
+.phase:nth-child(4) .p-dot { background: var(--sun); box-shadow: 0 0 12px rgba(255, 208, 138, .7); }
+.phase h3 { font-size: .95rem; margin-bottom: 4px; }
+.phase p { color: var(--muted); font-size: .84rem; line-height: 1.5; margin: 0; }

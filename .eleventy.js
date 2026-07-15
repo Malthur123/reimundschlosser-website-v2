@@ -1,5 +1,3 @@
-const markdownIt = require("markdown-it")({ html: true });
-
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/js");
@@ -13,10 +11,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     return new Date(dateObj).toLocaleDateString("en-GB", { year: "numeric", month: "long", day: "numeric" });
   });
-  eleventyConfig.addFilter("markdown", (content) => markdownIt.render(content || ""));
-
   eleventyConfig.addCollection("portfolio", (api) => {
-    return api.getFilteredByGlob("src/content/portfolio/*.md").sort((a, b) => a.data.order - b.data.order);
+    return api.getFilteredByGlob("src/portfolio/*.njk").sort((a, b) => a.data.order - b.data.order);
   });
 
   return {

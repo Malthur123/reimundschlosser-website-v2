@@ -1,0 +1,16 @@
+{#- Optional component, extracted from design/project-mna-visual-concept.html.
+    Usage:
+      {% from "partials/project-phase-strip.njk" import phaseStrip %}
+      {{ phaseStrip([
+        { label: "Design", description: "..." },
+        { label: "Consult", description: "..." }
+      ]) }}
+    Built for 4 phases across desktop (connected by a gradient line), dropping to
+    a 2-column grid with no connecting line under 700px. -#}
+{% macro phaseStrip(phases) %}
+<div class="phases">
+  {%- for p in phases %}
+  <div class="phase"><div class="p-dot"></div><h3>{{ p.label }}</h3><p>{{ p.description }}</p></div>
+  {%- endfor %}
+</div>
+{% endmacro %}

@@ -1,0 +1,14 @@
+{#- Mandatory section wrapper for project pages. Every project page must call this
+    exactly 3 times, in order, with these exact headings:
+      "My Role & Responsibilities", "The Challenge", "The Solution & Outcome"
+    Usage:
+      {% from "partials/project-section.njk" import section %}
+      {% call section("My Role & Responsibilities") %}
+        ...free-form content...
+      {% endcall %}
+    Everything else on the page (banner, stat band, pull quote, phase strip, intro
+    copy) is authored directly in the page and is not constrained by this macro. -#}
+{% macro section(heading) %}
+<h2>{{ heading }}</h2>
+{{ caller() }}
+{% endmacro %}

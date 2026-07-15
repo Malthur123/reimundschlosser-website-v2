@@ -1,0 +1,13 @@
+{#- Optional component, extracted from design/project-mna-visual-concept.html.
+    Usage:
+      {% from "partials/project-pull-quote.njk" import pullQuote %}
+      {{ pullQuote('"A quote, in the author's own words."', "Optional attribution line") }}
+    Attribution is optional — omit the second argument to leave it out. -#}
+{% macro pullQuote(text, attribution) %}
+<div class="pull">
+  <p>{{ text }}</p>
+  {%- if attribution %}
+  <span>{{ attribution }}</span>
+  {%- endif %}
+</div>
+{% endmacro %}
