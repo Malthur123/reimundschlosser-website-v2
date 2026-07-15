@@ -17,7 +17,9 @@ css:
     <div class="p-grid">
       {%- for project in collections.portfolio %}
       <a class="tile" href="{{ project.url }}">
-        <div class="ph g{{ project.data.order }}"><span class="num">{{ "0" if project.data.order < 10 else "" }}{{ project.data.order }}</span></div>
+        <div class="ph{% if not project.data.tileImage %} g{{ project.data.order }}{% endif %}"{% if project.data.tileImage %} style="background-image:url('{{ project.data.tileImage }}')"{% endif %}>
+          {%- if not project.data.tileImage %}<span class="num">{{ "0" if project.data.order < 10 else "" }}{{ project.data.order }}</span>{%- endif %}
+        </div>
         <h3>{{ project.data.title }}</h3>
         <span class="more">View project →</span>
       </a>
