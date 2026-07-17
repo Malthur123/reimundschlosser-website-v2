@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — Global Total Rewards Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#10222e; --surface:#173040; --surface-2:#1d3b4e;
+    --ink:#f4f1e8; --muted:#a3b8c2;
+    --teal:#3fe0c5; --coral:#ff8e7a; --sun:#ffd08a;
+    --radius:20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Lato',system-ui,sans-serif;line-height:1.7;overflow-x:hidden;
+    background-image:radial-gradient(1px 1px at 12% 18%, rgba(244,241,232,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 78% 8%, rgba(244,241,232,.3) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 55% 30%, rgba(255,208,138,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 30% 60%, rgba(244,241,232,.22) 50%, transparent 51%),
+      radial-gradient(1px 1px at 90% 45%, rgba(63,224,197,.3) 50%, transparent 51%);
+    background-attachment:fixed}
+  h1,h2,h3,.brand{font-family:'Sora',system-ui,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(16,34,46,.8);border-bottom:1px solid rgba(63,224,197,.14)}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;max-width:1080px;margin:0 auto}
+  .brand{font-weight:700;font-size:1.05rem}
+  .brand em{font-style:normal;color:var(--teal)}
+  .links{display:flex;gap:28px;font-size:.92rem;color:var(--muted)}
+  .links a:hover{color:var(--teal)}
+  .links a.active{color:var(--ink);border-bottom:2px solid var(--teal);padding-bottom:3px}
+
+  .detail-head{padding:64px 0 8px}
+  .crumb{color:var(--teal);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;margin-bottom:16px;line-height:1.2}
+  .summary{color:var(--muted);font-size:1.08rem;max-width:66ch}
+
+  .banner{border-radius:var(--radius);margin:36px 0 0;background:linear-gradient(140deg,#14303f,#1d3b4e 55%,#24515a);
+    border:1px solid rgba(63,224,197,.15);overflow:hidden}
+  .banner svg{display:block;width:100%;height:auto}
+
+  .stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 8px}
+  @media(max-width:700px){.stat-band{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--surface);border:1px solid rgba(63,224,197,.14);border-radius:16px;padding:20px 22px;text-align:center}
+  .stat b{display:block;font-family:'Sora';font-size:1.7rem;line-height:1.25;
+    background:linear-gradient(120deg,var(--teal),var(--sun));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{color:var(--muted);font-size:.84rem}
+
+  .detail-body{padding:26px 0 70px}
+  .detail-body h2{font-size:1.3rem;margin:38px 0 12px}
+  .detail-body h2::before{content:"";display:inline-block;width:22px;height:6px;border-radius:3px;margin-right:12px;vertical-align:middle;
+    background:linear-gradient(90deg,var(--teal),var(--sun))}
+  .detail-body p{color:var(--muted);max-width:70ch;margin-bottom:14px}
+  .detail-body li{color:var(--muted);margin:0 0 10px 22px;max-width:66ch}
+  .detail-body li::marker{color:var(--teal)}
+
+  .pull{margin:40px 0;padding:28px 34px;background:var(--surface);border-radius:var(--radius);
+    border-left:5px solid;border-image:linear-gradient(180deg,var(--teal),var(--sun)) 1}
+  .pull p{font-family:'Sora';font-weight:600;font-size:1.25rem;color:var(--ink);line-height:1.5;margin:0;max-width:none}
+  .pull span{display:block;color:var(--muted);font-size:.85rem;margin-top:10px;font-family:'Lato'}
+
+  .back{display:inline-flex;align-items:center;gap:8px;margin-top:40px;padding:12px 24px;border-radius:999px;
+    border:1.5px solid var(--teal);color:var(--teal);font-weight:700;font-size:.92rem;transition:transform .15s ease;cursor:pointer;background:none;font-family:'Lato'}
+  .back:hover{transform:translateX(-3px)}
+
+  footer{border-top:1px solid rgba(63,224,197,.12);padding:52px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;text-align:center;max-width:1080px;margin:0 auto;padding:0 24px}
+  @media(max-width:640px){.foot-grid{grid-template-columns:1fr}}
+  .foot-grid .col:first-child{text-align:left}
+  .foot-grid .col:last-child{text-align:right}
+  @media(max-width:640px){.foot-grid .col:first-child,.foot-grid .col:last-child{text-align:center}}
+  .foot-grid b{font-family:'Sora';display:block;margin-bottom:6px;color:var(--ink)}
+  .foot-grid span{color:var(--muted);font-size:.92rem}
+  .foot-grid a{color:var(--teal)}
+  .copyright{text-align:center;color:var(--muted);font-size:.82rem;margin-top:36px}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner">
+  <a class="brand" href="#">REIMUND<em>SCHLOSSER</em></a>
+  <div class="links"><a href="#">About</a><a class="active" href="#">Portfolio</a><a href="#">Blog</a><a href="#">Contact</a></div>
+</div></nav>
+
+<div class="wrap">
+  <div class="detail-head">
+    <div class="crumb">Portfolio · Case study</div>
+    <h1>Global Total Rewards Strategy</h1>
+    <p class="summary">Compensation is usually specialist territory, but I've made a habit of working deep inside it as a Business Partner: from cost-of-living salary banding at Peloton to redesigning variable pay and co-introducing a complete job architecture at Teads after a merger. The architecture work is the anchor story here. Two legacy companies, two incompatible levelling structures, and a workforce increasingly frustrated by pay opacity, unified into one transparent framework with clear descriptors showing every employee what growth actually looks like.</p>
+
+    <!-- Abstract banner: level staircase with people climbing, balance hint -->
+    <div class="banner" role="img" aria-label="Abstract graphic of an ascending career ladder with people on different levels">
+      <svg viewBox="0 0 920 210" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="steps" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#3fe0c5"/><stop offset="1" stop-color="#ffd08a"/>
+          </linearGradient>
+        </defs>
+        <!-- faint balance scale in background -->
+        <g stroke="rgba(163,184,194,.18)" stroke-width="2" fill="none">
+          <line x1="735" y1="45" x2="735" y2="115"/>
+          <line x1="675" y1="60" x2="795" y2="60"/>
+          <path d="M655,60 l20,34 a22 22 0 0 0 0,0 M675,94 a20 14 0 0 0 -40,0" transform="translate(20,-34)"/>
+          <path d="M655,94 a20 14 0 0 0 40,0" transform="translate(0,0)"/>
+          <path d="M775,94 a20 14 0 0 0 40,0"/>
+          <line x1="675" y1="60" x2="675" y2="94"/><line x1="795" y1="60" x2="795" y2="94"/>
+        </g>
+        <!-- rising steps -->
+        <g>
+          <rect x="90"  y="150" width="120" height="16" rx="8" fill="rgba(63,224,197,.5)"/>
+          <rect x="230" y="118" width="120" height="16" rx="8" fill="rgba(63,224,197,.7)"/>
+          <rect x="370" y="86"  width="120" height="16" rx="8" fill="rgba(127,217,200,.85)"/>
+          <rect x="510" y="54"  width="120" height="16" rx="8" fill="url(#steps)"/>
+        </g>
+        <!-- people circles on steps -->
+        <circle cx="130" cy="136" r="10" fill="#3fe0c5"/>
+        <circle cx="185" cy="136" r="8"  fill="#a3b8c2"/>
+        <circle cx="285" cy="104" r="10" fill="#ff8e7a"/>
+        <circle cx="425" cy="72"  r="10" fill="#f4f1e8"/>
+        <!-- one mid-climb between steps 3 and 4 -->
+        <circle cx="500" cy="66" r="10" fill="#ffd08a"/>
+        <path d="M470,86 C 480,78 488,72 498,68" fill="none" stroke="rgba(255,208,138,.7)" stroke-width="2" stroke-dasharray="4 5"/>
+        <!-- ascending arrow -->
+        <path d="M120,180 C 320,175 560,120 680,40" fill="none" stroke="url(#steps)" stroke-width="2.5" stroke-dasharray="8 9" opacity=".7"/>
+        <path d="M680,40 l-16,2 l7,9 l-5,11 z" fill="#ffd08a" opacity=".9"/>
+        <!-- stars -->
+        <g fill="#f4f1e8">
+          <circle cx="60" cy="45" r="1.4" opacity=".35"/><circle cx="860" cy="170" r="1.3" opacity=".3"/>
+          <circle cx="420" cy="25" r="1.4" opacity=".3"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="stat-band">
+      <div class="stat"><b>2 → 1</b><span>legacy structures unified into one job architecture</span></div>
+      <div class="stat"><b>Every role</b><span>mapped to a level, with clear descriptors</span></div>
+      <div class="stat"><b>Quarterly → Annual</b><span>variable pay, realigned to how teams create value</span></div>
+      <div class="stat"><b>Day 1</b><span>salary audit: my ritual in every new role</span></div>
+    </div>
+  </div>
+
+  <div class="detail-body">
+    <h2>My Role &amp; Responsibilities</h2>
+    <ul>
+      <li>Co-introduced a new company-wide job architecture at Teads following the merger, based on Radford's levelling system, mapping every employee in scope to the new levels</li>
+      <li>Authored level and role descriptors, giving employees a transparent view of what stepping up requires</li>
+      <li>Helped move Teads' studio and data &amp; insights teams from quarterly commission to annual bonus, aligning variable pay with how those functions really create value, and folding previous target commission into base salary for junior colleagues not yet bonus-eligible</li>
+      <li>At Peloton, built regional cost-of-living salary banding for Retail and Supply Chain roles in Germany: researched and rated each location High, Medium or Low, applied premiums and discounts accordingly, and kept the total within budget</li>
+      <li>Run a full salary audit of my entire client group at the start of every HR role I take on, mapping salary penetration to spot who needs addressing most urgently come review time</li>
+    </ul>
+
+    <h2>The Challenge</h2>
+    <p>After the merger, Teads had inherited two pay worlds. Employees from each legacy company suspected their counterparts earned more for "the same job", and whether that was true mattered less than the fact that nobody could tell. In adtech, where talent is famously pay-conscious, opacity reads as unfairness. We didn't just have a structural problem, we had a trust problem: no shared levels, no common language for roles, and no transparent answer to the most human question in compensation, "what do I need to do to move up?"</p>
+
+    <div class="pull">
+      <p>"I don't pay good wages because I have a lot of money; I have a lot of money because I pay good wages."</p>
+      <span>Robert Bosch, and the closest thing I have to a compensation philosophy</span>
+    </div>
+
+    <h2>The Solution &amp; Outcome</h2>
+    <p>We introduced one architecture for one company. Building on Radford's levelling system, which I knew well from Activision Blizzard, every employee was mapped to a common level, and I then wrote descriptors for each level and role so the framework wasn't just an HR filing system but a career map anyone could read. In my client group, pay structure consistency increased massively, and something subtler happened too: armed with a clear picture of the ladder, many employees became noticeably more invested in their own development. Transparency didn't just calm the fairness debate; it turned pay structure into a growth tool.</p>
+    <p>The other rewards work taught me the same lesson from different angles. The Peloton banding project was about staying attractive in expensive cities without breaking the budget. The variable pay redesign was about honesty: commission only makes sense when your goals genuinely drive revenue. And the deep-dive sessions I sought out with our Compensation lead, on pay philosophies, market positioning and how base, variable and equity interact, fed a genuine fascination: in a profession full of soft skills, compensation is where HR gets wonderfully technical, and I love that change of scenery.</p>
+    <p>Two beliefs guide me here. First, compensation is more complex than the salary comparisons people love to make; raw base numbers mean little without working time, benefits and the full picture. Second, pay is engagement strategy. You cannot make up for bad pay with a coffee machine and good vibes. Or as Robert Bosch put it: "I don't pay good wages because I have a lot of money; I have a lot of money because I pay good wages."</p>
+
+    <button class="back">← Back to Portfolio</button>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="foot-grid">
+      <div class="col"><b>Reimund Schlosser</b><span>Global People &amp; Culture Business Partner</span></div>
+      <div class="col"><b>Location</b><span>Bromley, South London, UK</span></div>
+      <div class="col"><b>Contact</b><span><a href="mailto:hey@reimundschlosser.com">hey@reimundschlosser.com</a></span></div>
+    </div>
+    <div class="copyright">© 2026 Reimund Schlosser</div>
+  </div>
+</footer>
+
+</body>
+</html>
