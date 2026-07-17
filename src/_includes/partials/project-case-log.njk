@@ -1,0 +1,17 @@
+{#- Optional component, extracted from design/project-risk-visual-v2.html.
+    Usage:
+      {% from "partials/project-case-log.njk" import caseLog %}
+      {{ caseLog([
+        { issue: "What went wrong.", fix: "What was done about it." },
+        { issue: "Another problem.", fix: "Another resolution." }
+      ]) }}
+    Renders each pair as a two-column issue/fix card — good for a series of
+    concrete before/after examples rather than prose. -#}
+{% macro caseLog(cases) %}
+{%- for c in cases %}
+<div class="case">
+  <div class="issue"><span class="tag">The issue</span><p>{{ c.issue }}</p></div>
+  <div class="fix"><span class="tag">The fix</span><p>{{ c.fix }}</p></div>
+</div>
+{%- endfor %}
+{% endmacro %}

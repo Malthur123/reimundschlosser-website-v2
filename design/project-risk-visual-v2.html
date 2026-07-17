@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — Strategic Risk &amp; Compliance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#10222e; --surface:#173040; --surface-2:#1d3b4e;
+    --ink:#f4f1e8; --muted:#a3b8c2;
+    --teal:#3fe0c5; --coral:#ff8e7a; --sun:#ffd08a;
+    --radius:20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Lato',system-ui,sans-serif;line-height:1.7;overflow-x:hidden;
+    background-image:radial-gradient(1px 1px at 12% 18%, rgba(244,241,232,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 78% 8%, rgba(244,241,232,.3) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 55% 30%, rgba(255,208,138,.35) 50%, transparent 51%),
+      radial-gradient(1px 1px at 30% 60%, rgba(244,241,232,.22) 50%, transparent 51%),
+      radial-gradient(1px 1px at 90% 45%, rgba(63,224,197,.3) 50%, transparent 51%);
+    background-attachment:fixed}
+  h1,h2,h3,.brand{font-family:'Sora',system-ui,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(16,34,46,.8);border-bottom:1px solid rgba(63,224,197,.14)}
+  .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;max-width:1080px;margin:0 auto}
+  .brand{font-weight:700;font-size:1.05rem}
+  .brand em{font-style:normal;color:var(--teal)}
+  .links{display:flex;gap:28px;font-size:.92rem;color:var(--muted)}
+  .links a:hover{color:var(--teal)}
+  .links a.active{color:var(--ink);border-bottom:2px solid var(--teal);padding-bottom:3px}
+
+  .detail-head{padding:64px 0 8px}
+  .crumb{color:var(--teal);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700;margin-bottom:16px;line-height:1.2}
+  .summary{color:var(--muted);font-size:1.08rem;max-width:66ch}
+
+  .banner{border-radius:var(--radius);margin:36px 0 0;background:linear-gradient(140deg,#14303f,#1d3b4e 55%,#24515a);
+    border:1px solid rgba(63,224,197,.15);overflow:hidden}
+  .banner svg{display:block;width:100%;height:auto}
+
+  .stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 8px}
+  @media(max-width:700px){.stat-band{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--surface);border:1px solid rgba(63,224,197,.14);border-radius:16px;padding:20px 22px;text-align:center}
+  .stat b{display:block;font-family:'Sora';font-size:1.8rem;line-height:1.25;
+    background:linear-gradient(120deg,var(--teal),var(--sun));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{color:var(--muted);font-size:.84rem}
+
+  .detail-body{padding:26px 0 70px}
+  .detail-body h2{font-size:1.3rem;margin:38px 0 12px}
+  .detail-body h2::before{content:"";display:inline-block;width:22px;height:6px;border-radius:3px;margin-right:12px;vertical-align:middle;
+    background:linear-gradient(90deg,var(--teal),var(--sun))}
+  .detail-body h3{font-size:1.02rem;margin:26px 0 6px;color:var(--ink)}
+  .detail-body p{color:var(--muted);max-width:70ch;margin-bottom:14px}
+  .detail-body li{color:var(--muted);margin:0 0 10px 22px;max-width:66ch}
+  .detail-body li::marker{color:var(--teal)}
+
+  /* case log: issue -> fix pairs */
+  .case{display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(63,224,197,.14);
+    border-radius:16px;overflow:hidden;margin-bottom:14px;background:var(--surface)}
+  @media(max-width:680px){.case{grid-template-columns:1fr}}
+  .case > div{padding:18px 22px}
+  .case .issue{background:rgba(255,142,122,.06);border-right:1px solid rgba(63,224,197,.12)}
+  @media(max-width:680px){.case .issue{border-right:none;border-bottom:1px solid rgba(63,224,197,.12)}}
+  .case .tag{display:block;font-family:'Sora';font-weight:700;font-size:.72rem;letter-spacing:.14em;
+    text-transform:uppercase;margin-bottom:6px}
+  .case .issue .tag{color:var(--coral)}
+  .case .fix .tag{color:var(--teal)}
+  .case p{color:var(--muted);font-size:.92rem;margin:0;max-width:none;line-height:1.6}
+
+  .pull{margin:40px 0;padding:28px 34px;background:var(--surface);border-radius:var(--radius);
+    border-left:5px solid;border-image:linear-gradient(180deg,var(--teal),var(--sun)) 1}
+  .pull p{font-family:'Sora';font-weight:600;font-size:1.25rem;color:var(--ink);line-height:1.5;margin:0;max-width:none}
+  .pull span{display:block;color:var(--muted);font-size:.85rem;margin-top:10px;font-family:'Lato'}
+
+  .back{display:inline-flex;align-items:center;gap:8px;margin-top:40px;padding:12px 24px;border-radius:999px;
+    border:1.5px solid var(--teal);color:var(--teal);font-weight:700;font-size:.92rem;transition:transform .15s ease;cursor:pointer;background:none;font-family:'Lato'}
+  .back:hover{transform:translateX(-3px)}
+
+  footer{border-top:1px solid rgba(63,224,197,.12);padding:52px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;text-align:center;max-width:1080px;margin:0 auto;padding:0 24px}
+  @media(max-width:640px){.foot-grid{grid-template-columns:1fr}}
+  .foot-grid .col:first-child{text-align:left}
+  .foot-grid .col:last-child{text-align:right}
+  @media(max-width:640px){.foot-grid .col:first-child,.foot-grid .col:last-child{text-align:center}}
+  .foot-grid b{font-family:'Sora';display:block;margin-bottom:6px;color:var(--ink)}
+  .foot-grid span{color:var(--muted);font-size:.92rem}
+  .foot-grid a{color:var(--teal)}
+  .copyright{text-align:center;color:var(--muted);font-size:.82rem;margin-top:36px}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner">
+  <a class="brand" href="#">REIMUND<em>SCHLOSSER</em></a>
+  <div class="links"><a href="#">About</a><a class="active" href="#">Portfolio</a><a href="#">Blog</a><a href="#">Contact</a></div>
+</div></nav>
+
+<div class="wrap">
+  <div class="detail-head">
+    <div class="crumb">Portfolio · Case study</div>
+    <h1>Strategic Risk &amp; Compliance</h1>
+    <p class="summary">When I joined Peloton as the sole HR contact for Germany, the company was booming, hiring at full speed, and running its German operation largely on UK policies translated into German. Some of them were confusing. Some were administratively painful. Some were simply not legal. Over the following year and a half, I turned this into a fully compliant HR environment while the business grew from 65 to around 250 employees, hiring roughly 200 people myself along the way. This is the story of being a one-person immune system for a hypergrowth business.</p>
+
+    <!-- Abstract banner: alerts resolved into compliance, guarded by a shield -->
+    <div class="banner" role="img" aria-label="Abstract graphic of compliance issues being resolved into checkmarks beside a protective shield">
+      <svg viewBox="0 0 920 210" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="tg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#3fe0c5"/><stop offset="1" stop-color="#ffd08a"/>
+          </linearGradient>
+        </defs>
+        <!-- document panel on the left -->
+        <rect x="70" y="35" width="250" height="140" rx="14" fill="rgba(29,59,78,.55)" stroke="rgba(163,184,194,.3)" stroke-width="1.5"/>
+        <line x1="95" y1="60" x2="230" y2="60" stroke="rgba(163,184,194,.35)" stroke-width="3" stroke-linecap="round"/>
+        <!-- alert items on the document -->
+        <g>
+          <circle cx="105" cy="92" r="10" fill="rgba(255,142,122,.9)"/>
+          <text x="105" y="97" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="13" fill="#10222e">!</text>
+          <line x1="125" y1="92" x2="290" y2="92" stroke="rgba(163,184,194,.28)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="105" cy="126" r="10" fill="rgba(255,142,122,.75)"/>
+          <text x="105" y="131" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="13" fill="#10222e">!</text>
+          <line x1="125" y1="126" x2="270" y2="126" stroke="rgba(163,184,194,.28)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="105" cy="158" r="10" fill="rgba(255,142,122,.6)"/>
+          <text x="105" y="163" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="13" fill="#10222e">!</text>
+          <line x1="125" y1="158" x2="282" y2="158" stroke="rgba(163,184,194,.28)" stroke-width="3" stroke-linecap="round"/>
+        </g>
+        <!-- transformation arrows flowing right -->
+        <g stroke="url(#tg)" stroke-width="2.5" fill="none" stroke-dasharray="7 8">
+          <path d="M340,92 C 400,88 440,84 490,80"/>
+          <path d="M340,126 C 405,124 445,120 490,114"/>
+          <path d="M340,158 C 405,158 445,152 490,146"/>
+        </g>
+        <path d="M492,80 l-14,-6 l4,9 l-8,7 z" fill="#7fd9c8"/>
+        <path d="M492,114 l-14,-6 l4,9 l-8,7 z" fill="#c9d0a0"/>
+        <path d="M492,146 l-14,-6 l4,9 l-8,7 z" fill="#ffd08a"/>
+        <!-- resolved checks -->
+        <g>
+          <circle cx="530" cy="78" r="12" fill="#3fe0c5"/>
+          <path d="M524,78 l4,4 l8,-9" fill="none" stroke="#10222e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="535" cy="113" r="12" fill="#7fd9c8"/>
+          <path d="M529,113 l4,4 l8,-9" fill="none" stroke="#10222e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="530" cy="147" r="12" fill="#ffd08a"/>
+          <path d="M524,147 l4,4 l8,-9" fill="none" stroke="#10222e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <!-- shield with paragraph symbol (employment law) -->
+        <path d="M735,30 l60,20 v48 c0,41 -30,67 -60,80 c-30,-13 -60,-39 -60,-80 v-48 z"
+          fill="rgba(63,224,197,.08)" stroke="rgba(63,224,197,.4)" stroke-width="2.5"/>
+        <text x="735" y="115" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="52" fill="rgba(255,208,138,.85)">§</text>
+        <!-- stars -->
+        <g fill="#f4f1e8">
+          <circle cx="90" cy="20" r="1.4" opacity=".35"/><circle cx="640" cy="30" r="1.3" opacity=".3"/>
+          <circle cx="870" cy="180" r="1.2" opacity=".3"/><circle cx="420" cy="195" r="1.3" opacity=".28"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="stat-band">
+      <div class="stat"><b>7</b><span>compliance gaps uncovered, all resolved</span></div>
+      <div class="stat"><b>1</b><span>legal challenge in 19 months, anticipated and calculated</span></div>
+      <div class="stat"><b>Fast</b><span>resolution every time, to keep risk contained</span></div>
+      <div class="stat"><b>4×</b><span>headcount growth, without a single compliance incident</span></div>
+    </div>
+  </div>
+
+  <div class="detail-body">
+    <h2>My Role &amp; Responsibilities</h2>
+    <ul>
+      <li>Sole HR contact for Peloton's German business: employment contracts, policies, employee relations and labour law compliance for a team growing from 65 to roughly 250</li>
+      <li>Audited the inherited, UK-derived policy landscape against German law and systematically rebuilt what didn't hold up</li>
+      <li>Owned complex employee relations cases end to end, from investigation to resolution, working with management, my manager and employment law counsel</li>
+      <li>Advised English-speaking managers who were new to the German legal environment, turning compliance from an afterthought into a habit</li>
+    </ul>
+
+    <h2>The Challenge</h2>
+    <p>Peloton had entered Germany fast, and the HR setup showed it: UK policies translated into German and applied as-is, managers (some of them British) who had never operated under German labour law, and a business hiring at a pace that left little time for careful housekeeping. The problems were everywhere once you knew where to look. A holiday year running April to March, which German law simply doesn't allow. Corporate employees with no working time tracking, despite EU requirements. Well-intentioned parental leave top-ups that would have cost employees part of their government benefits. Hard-copy employment contracts flying back and forth by post under the mistaken belief they needed wet signatures. And occasionally, something urgent: a store manager once let someone go on the final day of their probation period without any valid termination letter, and told me afterwards.</p>
+
+    <div class="pull">
+      <p>"Before raising an issue, I'd already have the solution worked out. In hypergrowth HR, you act now, not later."</p>
+      <span>The operating principle this role drilled into me</span>
+    </div>
+
+    <h2>The Solution &amp; Outcome</h2>
+    <p>With this many fronts at once, the fairest way to show the work is the way I kept track of it myself: as a case log.</p>
+
+    <div class="case">
+      <div class="issue"><span class="tag">The issue</span><p>Holiday year ran April to March: not permissible under German law, and a constant source of confusion for the team.</p></div>
+      <div class="fix"><span class="tag">The fix</span><p>Reconciled every employee's entitlement back to a legal January-to-December year, recalculating balances across the entity's entire history. The German team's reaction: relief. Things finally felt normal again.</p></div>
+    </div>
+
+    <div class="case">
+      <div class="issue"><span class="tag">The issue</span><p>Corporate employees weren't tracking working time at all, despite EU requirements, and viewed any tracking as surveillance.</p></div>
+      <div class="fix"><span class="tag">The fix</span><p>Full transparency: the law is the law, flexibility stays, and tracking protects people from burnout, since on trust-based time most employees work more than contracted, not less. Rolled out via our new T&amp;A system with pre-populated standard hours, so only exceptions needed logging.</p></div>
+    </div>
+
+    <div class="case">
+      <div class="issue"><span class="tag">The issue</span><p>An employee was let go on the final day of probation with no valid termination letter. Legally, the termination didn't exist, and the clock ran out that day.</p></div>
+      <div class="fix"><span class="tag">The fix</span><p>Called the MD, had the letter printed and wet-signed within the hour, and arranged a same-day courier to the employee's home through his PA. Valid, delivered, done.</p></div>
+    </div>
+
+    <div class="case">
+      <div class="issue"><span class="tag">The issue</span><p>A staffing provider lined up to fill store shifts had no Arbeitnehmerüberlassung licence: engaging contractors through them meant immediate legal risk.</p></div>
+      <div class="fix"><span class="tag">The fix</span><p>Caught it before signature, confronted the provider (who conceded and waived their fees), and hired the person directly instead, turning contract signatures around in two hours so they could still start next day.</p></div>
+    </div>
+
+    <div class="case">
+      <div class="issue"><span class="tag">The issue</span><p>Well-intentioned parental leave top-ups, copied from UK practice, would have reduced employees' German statutory benefits euro for euro.</p></div>
+      <div class="fix"><span class="tag">The fix</span><p>Redesigned the top-up as a compliant one-time payment, so the company could still do the right thing without costing employees their government benefits.</p></div>
+    </div>
+
+    <div class="case">
+      <div class="issue"><span class="tag">The issue</span><p>All employment contracts went out as hard copies by post, based on the myth that they required wet signatures. Slow, manual, and endless printing for our MD.</p></div>
+      <div class="fix"><span class="tag">The fix</span><p>Challenged the assumption, won our German legal counsel's backing, and moved all contracts and addendums to AdobeSign, ending the MD's running joke that I owed him printer ink.</p></div>
+    </div>
+
+    <div class="case">
+      <div class="issue"><span class="tag">The issue</span><p>Concerns about a manager arrived from three directions at once. My investigation confirmed serious misconduct, including working time fraud and inappropriate behaviour.</p></div>
+      <div class="fix"><span class="tag">The fix</span><p>Recommended termination without notice as a calculated risk: a legal challenge was likely, but exposure was limited and the decision right for the team. It became the only legal challenge of my nineteen months, and we walked into it with open eyes.</p></div>
+    </div>
+
+    <p>By the end, the German HR environment was thoroughly compliant, the business had grown almost fourfold without incident, and something subtler had changed: managers had stopped asking me to fix things after the fact and started asking me before acting. That shift, from cleanup crew to trusted advisor, is the real outcome of this role.</p>
+    <p>What it taught me: in a fast-paced, hypergrowth environment, HR earns its seat by being decisive. My rule became to never bring my manager a problem without already having worked out the solution, or at least a concrete plan. Compliance doesn't have to slow a business down. Done right, it's what allows a business to move fast safely.</p>
+
+    <button class="back">← Back to Portfolio</button>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="foot-grid">
+      <div class="col"><b>Reimund Schlosser</b><span>Global People &amp; Culture Business Partner</span></div>
+      <div class="col"><b>Location</b><span>Bromley, South London, UK</span></div>
+      <div class="col"><b>Contact</b><span><a href="mailto:hey@reimundschlosser.com">hey@reimundschlosser.com</a></span></div>
+    </div>
+    <div class="copyright">© 2026 Reimund Schlosser</div>
+  </div>
+</footer>
+
+</body>
+</html>

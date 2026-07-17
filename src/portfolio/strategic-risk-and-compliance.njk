@@ -1,26 +1,131 @@
 ---
 title: Strategic Risk & Compliance
 order: 8
+tileImage: /images/portfolio/tile-risk.svg
+tileImageAlt: "Abstract artwork of compliance alerts resolved into checkmarks beside a shield with a paragraph symbol"
+description: "How I acted as sole HR contact for Peloton's German business through hypergrowth, resolving compliance gaps while headcount grew fourfold."
 ---
 {% from "partials/project-section.njk" import section %}
+{% from "partials/project-stat-band.njk" import statBand %}
+{% from "partials/project-pull-quote.njk" import pullQuote %}
+{% from "partials/project-case-log.njk" import caseLog %}
 
 <div class="project-head">
   <div class="project-crumb">Portfolio · Case study</div>
   <h1>{{ title }}</h1>
-  <p class="project-summary">This is a one-paragraph summary of the project, its main goal, and the key result. It should be concise and compelling.</p>
-  <div class="project-banner ph g8"></div>
+  <p class="project-summary">When I joined Peloton as the sole HR contact for Germany, the company was booming, hiring at full speed, and running its German operation largely on UK policies translated into German. Some of them were confusing. Some were administratively painful. Some were simply not legal. Over the following year and a half, I turned this into a fully compliant HR environment while the business grew from 65 to around 250 employees, hiring roughly 200 people myself along the way. This is the story of being a one-person immune system for a hypergrowth business.</p>
+
+  <div class="project-banner" role="img" aria-label="Abstract graphic of compliance issues being resolved into checkmarks beside a protective shield">
+    <svg viewBox="0 0 920 210" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="tg" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#3fe0c5"/><stop offset="1" stop-color="#ffd08a"/>
+        </linearGradient>
+      </defs>
+      <!-- document panel on the left -->
+      <rect x="70" y="35" width="250" height="140" rx="14" fill="rgba(29,59,78,.55)" stroke="rgba(163,184,194,.3)" stroke-width="1.5"/>
+      <line x1="95" y1="60" x2="230" y2="60" stroke="rgba(163,184,194,.35)" stroke-width="3" stroke-linecap="round"/>
+      <!-- alert items on the document -->
+      <g>
+        <circle cx="105" cy="92" r="10" fill="rgba(255,142,122,.9)"/>
+        <text x="105" y="97" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="13" fill="#10222e">!</text>
+        <line x1="125" y1="92" x2="290" y2="92" stroke="rgba(163,184,194,.28)" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="105" cy="126" r="10" fill="rgba(255,142,122,.75)"/>
+        <text x="105" y="131" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="13" fill="#10222e">!</text>
+        <line x1="125" y1="126" x2="270" y2="126" stroke="rgba(163,184,194,.28)" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="105" cy="158" r="10" fill="rgba(255,142,122,.6)"/>
+        <text x="105" y="163" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="13" fill="#10222e">!</text>
+        <line x1="125" y1="158" x2="282" y2="158" stroke="rgba(163,184,194,.28)" stroke-width="3" stroke-linecap="round"/>
+      </g>
+      <!-- transformation arrows flowing right -->
+      <g stroke="url(#tg)" stroke-width="2.5" fill="none" stroke-dasharray="7 8">
+        <path d="M340,92 C 400,88 440,84 490,80"/>
+        <path d="M340,126 C 405,124 445,120 490,114"/>
+        <path d="M340,158 C 405,158 445,152 490,146"/>
+      </g>
+      <path d="M492,80 l-14,-6 l4,9 l-8,7 z" fill="#7fd9c8"/>
+      <path d="M492,114 l-14,-6 l4,9 l-8,7 z" fill="#c9d0a0"/>
+      <path d="M492,146 l-14,-6 l4,9 l-8,7 z" fill="#ffd08a"/>
+      <!-- resolved checks -->
+      <g>
+        <circle cx="530" cy="78" r="12" fill="#3fe0c5"/>
+        <path d="M524,78 l4,4 l8,-9" fill="none" stroke="#10222e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="535" cy="113" r="12" fill="#7fd9c8"/>
+        <path d="M529,113 l4,4 l8,-9" fill="none" stroke="#10222e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="530" cy="147" r="12" fill="#ffd08a"/>
+        <path d="M524,147 l4,4 l8,-9" fill="none" stroke="#10222e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <!-- shield with paragraph symbol (employment law) -->
+      <path d="M735,30 l60,20 v48 c0,41 -30,67 -60,80 c-30,-13 -60,-39 -60,-80 v-48 z"
+        fill="rgba(63,224,197,.08)" stroke="rgba(63,224,197,.4)" stroke-width="2.5"/>
+      <text x="735" y="115" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="52" fill="rgba(255,208,138,.85)">§</text>
+      <!-- stars -->
+      <g fill="#f4f1e8">
+        <circle cx="90" cy="20" r="1.4" opacity=".35"/><circle cx="640" cy="30" r="1.3" opacity=".3"/>
+        <circle cx="870" cy="180" r="1.2" opacity=".3"/><circle cx="420" cy="195" r="1.3" opacity=".28"/>
+      </g>
+    </svg>
+  </div>
+
+  {{ statBand([
+    { value: "7", label: "compliance gaps uncovered, all resolved" },
+    { value: "1", label: "legal challenge in 19 months, anticipated and calculated" },
+    { value: "Fast", label: "resolution every time, to keep risk contained" },
+    { value: "4×", label: "headcount growth, without a single compliance incident" }
+  ]) }}
 </div>
 
 <div class="project-body">
   {% call section("My Role & Responsibilities") %}
-  <p>Describe your specific role in this project. What were you responsible for? Did you lead the project, or were you a key contributor? Use bullet points if it helps clarify your tasks.</p>
+  <ul>
+    <li>Sole HR contact for Peloton's German business: employment contracts, policies, employee relations and labour law compliance for a team growing from 65 to roughly 250</li>
+    <li>Audited the inherited, UK-derived policy landscape against German law and systematically rebuilt what didn't hold up</li>
+    <li>Owned complex employee relations cases end to end, from investigation to resolution, working with management, my manager and employment law counsel</li>
+    <li>Advised English-speaking managers who were new to the German legal environment, turning compliance from an afterthought into a habit</li>
+  </ul>
   {% endcall %}
 
   {% call section("The Challenge") %}
-  <p>What was the business problem or challenge that this project was designed to solve? Provide some context for the reader.</p>
+  <p>Peloton had entered Germany fast, and the HR setup showed it: UK policies translated into German and applied as-is, managers (some of them British) who had never operated under German labour law, and a business hiring at a pace that left little time for careful housekeeping. The problems were everywhere once you knew where to look. A holiday year running April to March, which German law simply doesn't allow. Corporate employees with no working time tracking, despite EU requirements. Well-intentioned parental leave top-ups that would have cost employees part of their government benefits. Hard-copy employment contracts flying back and forth by post under the mistaken belief they needed wet signatures. And occasionally, something urgent: a store manager once let someone go on the final day of their probation period without any valid termination letter, and told me afterwards.</p>
+
+  {{ pullQuote('"Before raising an issue, I\'d already have the solution worked out. In hypergrowth HR, you act now, not later."', "The operating principle this role drilled into me") }}
   {% endcall %}
 
   {% call section("The Solution & Outcome") %}
-  <p>Explain the solution you implemented. How did it address the challenge? Most importantly, what were the results? Use metrics and data if possible (e.g., "reduced employee turnover by 15%," "improved engagement scores by 20%").</p>
+  <p>With this many fronts at once, the fairest way to show the work is the way I kept track of it myself: as a case log.</p>
+
+  {{ caseLog([
+    {
+      issue: "Holiday year ran April to March: not permissible under German law, and a constant source of confusion for the team.",
+      fix: "Reconciled every employee's entitlement back to a legal January-to-December year, recalculating balances across the entity's entire history. The German team's reaction: relief. Things finally felt normal again."
+    },
+    {
+      issue: "Corporate employees weren't tracking working time at all, despite EU requirements, and viewed any tracking as surveillance.",
+      fix: "Full transparency: the law is the law, flexibility stays, and tracking protects people from burnout, since on trust-based time most employees work more than contracted, not less. Rolled out via our new T&A system with pre-populated standard hours, so only exceptions needed logging."
+    },
+    {
+      issue: "An employee was let go on the final day of probation with no valid termination letter. Legally, the termination didn't exist, and the clock ran out that day.",
+      fix: "Called the MD, had the letter printed and wet-signed within the hour, and arranged a same-day courier to the employee's home through his PA. Valid, delivered, done."
+    },
+    {
+      issue: "A staffing provider lined up to fill store shifts had no Arbeitnehmerüberlassung licence: engaging contractors through them meant immediate legal risk.",
+      fix: "Caught it before signature, confronted the provider (who conceded and waived their fees), and hired the person directly instead, turning contract signatures around in two hours so they could still start next day."
+    },
+    {
+      issue: "Well-intentioned parental leave top-ups, copied from UK practice, would have reduced employees' German statutory benefits euro for euro.",
+      fix: "Redesigned the top-up as a compliant one-time payment, so the company could still do the right thing without costing employees their government benefits."
+    },
+    {
+      issue: "All employment contracts went out as hard copies by post, based on the myth that they required wet signatures. Slow, manual, and endless printing for our MD.",
+      fix: "Challenged the assumption, won our German legal counsel's backing, and moved all contracts and addendums to AdobeSign, ending the MD's running joke that I owed him printer ink."
+    },
+    {
+      issue: "Concerns about a manager arrived from three directions at once. My investigation confirmed serious misconduct, including working time fraud and inappropriate behaviour.",
+      fix: "Recommended termination without notice as a calculated risk: a legal challenge was likely, but exposure was limited and the decision right for the team. It became the only legal challenge of my nineteen months, and we walked into it with open eyes."
+    }
+  ]) }}
+
+  <p>By the end, the German HR environment was thoroughly compliant, the business had grown almost fourfold without incident, and something subtler had changed: managers had stopped asking me to fix things after the fact and started asking me before acting. That shift, from cleanup crew to trusted advisor, is the real outcome of this role.</p>
+  <p>What it taught me: in a fast-paced, hypergrowth environment, HR earns its seat by being decisive. My rule became to never bring my manager a problem without already having worked out the solution, or at least a concrete plan. Compliance doesn't have to slow a business down. Done right, it's what allows a business to move fast safely.</p>
   {% endcall %}
 </div>

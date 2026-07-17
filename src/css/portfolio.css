@@ -49,6 +49,7 @@
   content: ""; display: inline-block; width: 22px; height: 6px; border-radius: 3px; margin-right: 12px; vertical-align: middle;
   background: linear-gradient(90deg, var(--teal), var(--sun));
 }
+.project-body h3 { font-size: 1.02rem; margin: 26px 0 6px; color: var(--ink); }
 .project-body p { color: var(--muted); max-width: 70ch; margin-bottom: 14px; }
 .project-body li { color: var(--muted); margin: 0 0 10px 22px; max-width: 66ch; }
 .project-body li::marker { color: var(--teal); }
@@ -91,3 +92,17 @@
 .phase:nth-child(4) .p-dot { background: var(--sun); box-shadow: 0 0 12px rgba(255, 208, 138, .7); }
 .phase h3 { font-size: .95rem; margin-bottom: 4px; }
 .phase p { color: var(--muted); font-size: .84rem; line-height: 1.5; margin: 0; }
+
+/* CASE LOG: issue -> fix pairs (optional component) */
+.case {
+  display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(63, 224, 197, .14);
+  border-radius: 16px; overflow: hidden; margin-bottom: 14px; background: var(--surface);
+}
+@media (max-width: 680px) { .case { grid-template-columns: 1fr; } }
+.case > div { padding: 18px 22px; }
+.case .issue { background: rgba(255, 142, 122, .06); border-right: 1px solid rgba(63, 224, 197, .12); }
+@media (max-width: 680px) { .case .issue { border-right: none; border-bottom: 1px solid rgba(63, 224, 197, .12); } }
+.case .tag { display: block; font-family: 'Sora'; font-weight: 700; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 6px; }
+.case .issue .tag { color: var(--coral); }
+.case .fix .tag { color: var(--teal); }
+.case p { color: var(--muted); font-size: .92rem; margin: 0; max-width: none; line-height: 1.6; }
